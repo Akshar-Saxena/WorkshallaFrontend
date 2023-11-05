@@ -45,6 +45,7 @@ export default function HomePageBeforeLogin() {
                     <ServicesCard title="Placement"/>
                 </div>
             </div>
+            
         </>
     )
 }
