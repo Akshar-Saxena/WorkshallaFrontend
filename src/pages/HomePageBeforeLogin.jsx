@@ -1,6 +1,8 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
 import ServicesCard from '../components/ServicesCard'
+import CompaniesCard from '../components/CompaniesCard'
+import ServicesTitles from '../constants/ServicesTitles.json'
 
 export default function HomePageBeforeLogin() {
     return (
@@ -39,11 +41,29 @@ export default function HomePageBeforeLogin() {
                 <h3 className='text-center pt-10'>Services</h3>
                 <h1 className='text-center text-4xl font-bold'>Our Services</h1>
                 <div className='flex justify-evenly place-items-center mt-[100px]'>
-                    <ServicesCard title="Internships"/>
-                    <ServicesCard title="Jobs"/>
-                    <ServicesCard title="Courses"/>
-                    <ServicesCard title="Placement"/>
+                    {ServicesTitles.map((element, id) => (
+                        <ServicesCard title={element.title} key={id}/>
+                    ))}
                 </div>
+            </div>
+            {/* Services Section ends here */}
+
+
+            {/* Companies Section starts here */}
+            <div className='overflow-hidden w-[90%] m-auto  pb-20'>
+                <h3 className='text-center pt-10'>Companies</h3>
+                <h1 className='text-center text-4xl font-bold'>Featured Companies Actively Hiring</h1>
+                <div className='flex pt-12 pb-10 overflow-scroll'>
+                    <CompaniesCard/>
+                    <CompaniesCard/>
+                    <CompaniesCard/>
+                    <CompaniesCard/>
+                    <CompaniesCard/>
+                    <CompaniesCard/>
+                    <CompaniesCard/>
+                    <CompaniesCard/>
+                </div>
+                <button className='w-1/6 bg-purple-700 mt-10  text-white py-3 px-10 rounded-lg hover:bg-purple-900'>View all Companies</button>
             </div>
         </>
     )
