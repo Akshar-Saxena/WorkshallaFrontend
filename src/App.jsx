@@ -4,17 +4,18 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
-import HomePageBeforeLogin from './pages/HomePageBeforeLogin'
+import HomePageBeforeLogin from './pages/HomePageBeforeLogin' 
+
 
 function App() {
   return (
     <>
-      <Router>
+     <Router>
         <Routes>
           <Route exact path='/' element={<HomePageBeforeLogin/>}/>
           {/* <Route exact path='/home' element={HomePageAfterLogin}/> */}
         </Routes>
-      </Router>
+      </Router> 
     </>
   )
 }
