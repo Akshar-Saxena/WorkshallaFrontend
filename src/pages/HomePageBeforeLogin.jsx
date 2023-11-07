@@ -3,6 +3,8 @@ import NavBar from '../components/NavBar'
 import ServicesCard from '../components/ServicesCard'
 import CompaniesCard from '../components/CompaniesCard'
 import ServicesTitles from '../constants/ServicesTitles.json'
+import ChallengeCard from '../components/ChallengeCard'
+import Footer from '../components/Footer'
 
 export default function HomePageBeforeLogin() {
     return (
@@ -42,30 +44,51 @@ export default function HomePageBeforeLogin() {
                 <h1 className='text-center text-4xl font-bold'>Our Services</h1>
                 <div className='flex justify-evenly place-items-center mt-[100px]'>
                     {ServicesTitles.map((element, id) => (
-                        <ServicesCard title={element.title} key={id}/>
+                        <ServicesCard title={element.title} key={id} />
                     ))}
                 </div>
             </div>
-            
+
             {/* Services Section ends here */}
 
 
             {/* Companies Section starts here */}
-            <div className='overflow-hidden w-[90%] m-auto  pb-20'>
+            <div className='overflow-hidden w-[90%] m-auto pb-20'>
                 <h3 className='text-center pt-10'>Companies</h3>
                 <h1 className='text-center text-4xl font-bold'>Featured Companies Actively Hiring</h1>
-                <div className='flex pt-12 pb-10 overflow-scroll'>
-                    <CompaniesCard/>
-                    <CompaniesCard/>
-                    <CompaniesCard/>
-                    <CompaniesCard/>
-                    <CompaniesCard/>
-                    <CompaniesCard/>
-                    <CompaniesCard/>
-                    <CompaniesCard/>
+                <div className='flex pt-12 pb-7 overflow-scroll'>
+                    <CompaniesCard />
+                    <CompaniesCard />
+                    <CompaniesCard />
+                    <CompaniesCard />
+                    <CompaniesCard />
+                    <CompaniesCard />
+                    <CompaniesCard />
+                    <CompaniesCard />
                 </div>
-                <button className='w-1/6 bg-purple-700 mt-10  text-white py-3 px-10 rounded-lg hover:bg-purple-900'>View all Companies</button>
+                <button className='w-1/6 text-xs bg-purple-700 mt-7  text-white py-3 px-10 rounded-lg hover:bg-purple-900'>View all Companies</button>
             </div>
+            {/* Companies Section ends here */}
+
+            
+            {/* Challenges Section starts here */}
+            <div className='overflow-hidden bg-[#FFB2CA1F] pb-10 flex flex-col justify-center place-items-center'>
+                <h3 className='text-center pt-10'>Events</h3>
+                <h1 className='text-center text-4xl font-bold'>Upcoming Events and Challenges</h1>
+                <div className='flex pt-12 pb-12 overflow-scroll w-[90%]'>
+                    <ChallengeCard/>
+                    <ChallengeCard/>
+                    <ChallengeCard/>
+                    <ChallengeCard/>
+                    <ChallengeCard/>
+                </div>
+            </div>
+            {/* Challenges Section ends here */}
+
+            
+            {/* Footer Section starts here */}
+            <Footer/>
+            {/* Footer Section ends here */}
         </>
     )
 }

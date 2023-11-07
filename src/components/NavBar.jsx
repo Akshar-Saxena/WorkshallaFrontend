@@ -13,7 +13,7 @@ export default function NavBar() {
         </ul>
       </div>
       <div>
-        <button className='py-2 px-4 rounded mx-2 my-3 font-medium hover:outline hover: outline-1 hover:outline-purple-600 hover:text-purple-600'>Sign In</button>
+        <button className='py-2 px-4 rounded mx-2 my-3 font-medium hover:outline hover: outline-1 hover:outline-purple-600 hover:text-white'>Sign In</button>
         <button className='py-2 px-4 rounded mx-2 my-3 mr-12 bg-purple-500 text-white font-medium  hover:outline hover: outline-1 hover:outline-purple-600 hover:text-purple-600 hover:bg-white'>Register</button>
       </div>
     </div>
