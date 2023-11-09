@@ -5,6 +5,9 @@ import {
   Route
 } from 'react-router-dom'
 import HomePageBeforeLogin from './pages/HomePageBeforeLogin' 
+import RegistrationPage from './pages/RegistrationPage'
+import LoginPage from './pages/LoginPage'
+import ResetPasswordPage from'./pages/ResetPasswordPage'
 
 
 function App() {
@@ -13,6 +16,12 @@ function App() {
      <Router>
         <Routes>
           <Route exact path='/' element={<HomePageBeforeLogin/>}/>
+          <Route exact path='/register' element={<RegistrationPage/>}/>
+          <Route exact path='/login' element={<LoginPage/>}/>
+          <Route exact path='/resetpassword' element={<ResetPasswordPage/>}/> 
+
+          
+          
           {/* <Route exact path='/home' element={HomePageAfterLogin}/> */}
         </Routes>
       </Router> 
