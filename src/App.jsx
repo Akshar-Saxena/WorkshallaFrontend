@@ -7,7 +7,8 @@ import {
 import HomePageBeforeLogin from './pages/HomePageBeforeLogin' 
 import RegistrationPage from './pages/RegistrationPage'
 import LoginPage from './pages/LoginPage'
-import ResetPasswordPage from'./pages/ResetPasswordPage'
+{/*import ResetPasswordPage from'./pages/ResetPasswordPage'*/}
+import CompaniesPage from'./pages/CompaniesPage'
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
           <Route exact path='/' element={<HomePageBeforeLogin/>}/>
           <Route exact path='/register' element={<RegistrationPage/>}/>
           <Route exact path='/login' element={<LoginPage/>}/>
-          <Route exact path='/resetpassword' element={<ResetPasswordPage/>}/> 
+          {/*<Route exact path='/resetpassword' element={<ResetPasswordPage/>}/>*/} 
+          <Route exact path='/companies' element={<CompaniesPage/>}/>
 
           
           
