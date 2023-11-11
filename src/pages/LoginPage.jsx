@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const LoginPage = () => {
-  return (
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+    return (
     <div className="flex">
       
       <div className="w-1/2 h-screen">
@@ -31,13 +41,28 @@ const LoginPage = () => {
               <label htmlFor="password" className="block text-lg font-medium text-black-600">
                 Password
               </label>
+              
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 id="password"
+                name="password"
+                value={password}
+                onChange={handlePasswordChange}
                 className="w-full mt-2 p-2 border-gray-300-rounded-lg"
                 placeholder="Enter your password"
               />
+              <span 
+               onClick={togglePasswordVisibility}
+               className="cursor-pointer"
+               >
+               {showPassword ? (
+                  <img src="../src/assets/hidePassword.png" alt=""/>
+                ) : (
+                  <img src="../src/assets/hidePassword.png" alt=""/>
+                )}
+              </span>
               <div className="flex text-sm mt-2">
+                <img src="../src/assets/rectangleTickBox.png" className="m-1"/>
                 <h3>Remember me</h3>
                 <h3 className="pl-40">Forgot Password?</h3>
               </div>
@@ -54,7 +79,7 @@ const LoginPage = () => {
             </div>
           </form>
         </div>
-        </div>
+      </div>
       </div>
   );
 };
