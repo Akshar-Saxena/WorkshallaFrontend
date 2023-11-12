@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function CompaniesCard() {
   return (
+//     <div className='pt-10 rounded-lg outline outline-purple-600 outline-1 ml-1 mr-8 pb-5 flex flex-col justify-center place-items-center'>
     <div className='pt-10 rounded-lg outline outline-purple-600 outline-1 ml-1 mr-8 pb-5 flex flex-col justify-center place-items-center min-[280px]:w-[240px] min-[280px]:px-12'>
       <img className='w-14' src="../src/assets/companyLogo1.png" alt="" />
       <div className='rounded-lg px-6 py-2 my-8 mx-5 bg-pink-200'>
