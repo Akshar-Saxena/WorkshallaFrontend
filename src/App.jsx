@@ -9,6 +9,7 @@ import RegistrationPage from './pages/RegistrationPage'
 import LoginPage from './pages/LoginPage'
 {/*import ResetPasswordPage from'./pages/ResetPasswordPage'*/}
 import CompaniesPage from'./pages/CompaniesPage'
+import { JobsPage } from './pages/JobsPage'
 
 
 function App() {
@@ -21,9 +22,7 @@ function App() {
           <Route exact path='/login' element={<LoginPage/>}/>
           {/*<Route exact path='/resetpassword' element={<ResetPasswordPage/>}/>*/} 
           <Route exact path='/companies' element={<CompaniesPage/>}/>
-
-          
-          
+          <Route exact path='/jobs' element={<JobsPage/>}/>
           {/* <Route exact path='/home' element={HomePageAfterLogin}/> */}
         </Routes>
       </Router> 
