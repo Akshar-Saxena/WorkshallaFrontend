@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../components/NavBar' 
 import CompaniesCard2 from '../components/CompaniesCard2'
+import Footer from '../components/Footer'
 export default function CompaniesPage()
 {
 return(
@@ -36,6 +37,7 @@ return(
     </div>
 </div>
 
+   <Footer />
 
 
 
