@@ -7,7 +7,6 @@ import {
 import HomePageBeforeLogin from './pages/HomePageBeforeLogin' 
 import RegistrationPage from './pages/RegistrationPage'
 import LoginPage from './pages/LoginPage'
-{/*import ResetPasswordPage from'./pages/ResetPasswordPage'*/}
 import CompaniesPage from'./pages/CompaniesPage'
 import { JobsPage } from './pages/JobsPage'
 import ResetPassword from './pages/ResetPassword'

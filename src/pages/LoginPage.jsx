@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const LoginPage = () => {
   const [password, setPassword] = useState('');
@@ -75,7 +77,7 @@ const LoginPage = () => {
             </button>
         
             <div className=" flex text-sm font-bold mt-6 ml-14">
-             <h3>Haven't Registered Yet!</h3> <a href="#" className="text-purple-600">Register Now</a>
+             <h3>Haven't Registered Yet!</h3> <Link to="/register" className="text-purple-600">Register Now</Link>
             </div>
           </form>
         </div>
