@@ -42,11 +42,18 @@
     font-weight: 600;
   }
   
-input[type="text"],
+/* input[type="text"],
 input[type="tel"],
 input[type="email"],
 input[type="password"],
 button[type="submit"]{
+  width: 60%;
+  padding:3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+} */
+
+#name, #phoneNumber, #email, #password button{
   width: 60%;
   padding:3px;
   border: 1px solid #ccc;
