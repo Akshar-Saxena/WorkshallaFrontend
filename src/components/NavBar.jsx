@@ -21,7 +21,7 @@ export default function NavBar() {
 
         {/* Menu List items */}
         <ul className='flex place-items-center'>
-          <li><img src="../src/assets/menu.png" alt="" className='w-[20px] min-[768px]:hidden' onClick={toggleHandler} /></li>
+          <li><img src="../src/assets/menu.png" alt="" className='w-[20px] min-[280px]:block min-[768px]:hidden' onClick={toggleHandler} /></li>
           <Link to="/"><li className='cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base'>Home</li></Link>
           <li className='cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base'>Services</li>
           <Link to="/companies"><li className='cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base'>Companies</li></Link>
