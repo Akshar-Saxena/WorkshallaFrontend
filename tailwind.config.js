@@ -8,6 +8,12 @@ export default {
     extend: {
       fontFamily: {
         display: 'Inter'
+      },
+      keyframes: {
+        slideFromTop: {
+          '0%': { transform: 'translateY(-200px)', 'opacity':0 },
+          '100%': { transform: 'translateY(0)', 'opacity':1},
+        }
       }
     },
   },
