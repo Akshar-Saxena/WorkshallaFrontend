@@ -6,7 +6,9 @@ import ServicesTitles from '../constants/ServicesTitles.json'
 import ChallengeCard from '../components/ChallengeCard'
 import Footer from '../components/Footer'
 
+
 export default function HomePageBeforeLogin() {
+
 
     return (
         <>
@@ -47,7 +49,7 @@ export default function HomePageBeforeLogin() {
 
                 {/* Right Hero Section ends*/}
                 <div className='w-3/6 min-[280px]:w-[250px] min-[425px]:w-[400px] lg:w-[500px]' >
-                {/* Hero Image */}
+                    {/* Hero Image */}
                     <img src="assets/heroImage.png" alt="" />
                 </div>
                 {/* Right Hero Section ends*/}
@@ -102,6 +104,7 @@ export default function HomePageBeforeLogin() {
                 </div>
             </div>
             {/* Challenges Section ends here */}
+
 
 
             {/* Footer Section starts here */}

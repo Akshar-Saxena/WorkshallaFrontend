@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { useDispatch } from 'react-redux';
+import { login } from '../auth/authReducer';
 
 
 const LoginPage = () => {
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -18,6 +24,12 @@ const LoginPage = () => {
   const notifyError = (msg) => {
     toast.error(msg)
   }
+
+  const userLoggedIn = () => {
+    dispatch(login())
+    navigate('/')
+  }
+
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -51,6 +63,7 @@ const LoginPage = () => {
       console.log(response.data);
       setLoading(false)
       notify()
+      userLoggedIn()
     }).catch(function (error) {
       notifyError("Invalid Username or Password")
       setLoading(false)
@@ -58,6 +71,7 @@ const LoginPage = () => {
   }
   return (
     <div className="flex justify-evenly place-items-center h-screen md:flex-col lg:flex-row">
+      <button onClick={()=>navigate('/')} className='bg-[#946cc5] absolute top-[2%] left-[2%] px-5 py-3 rounded-full'>{"<"}</button>
 
       {loading && <div className='w-full h-[100vh] bg-white flex justify-center place-items-center opacity-75 absolute top-0 z-40'><PropagateLoader
         color={"#946cc3"}
@@ -65,7 +79,7 @@ const LoginPage = () => {
         size={25} />
       </div>}
 
-      <img src="assets/loginImage.png" alt="Login" className="min-[280px]:absolute min-[280px]:w-full min-[280px]:h-screen min-[280px]:opacity-30 min-[280px]:-z-10 md:w-[68%] md:h-fit md:static md:opacity-100 lg:w-[42%]"/>
+      <img src="assets/loginImage.png" alt="Login" className="min-[280px]:absolute min-[280px]:w-full min-[280px]:h-screen min-[280px]:opacity-30 min-[280px]:-z-10 md:w-[68%] md:h-fit md:static md:opacity-100 lg:w-[42%]" />
 
       <div className="min-[280px]:w-[80%] flex justify-center items-center lg:w-[32%]">
         <div className="w-full">
@@ -88,7 +102,7 @@ const LoginPage = () => {
               <label htmlFor="password" className="block temdium text-black">
                 Password
               </label>
-              
+
               <input
                 type={showPassword ? 'text' : 'password'}
                 id="password"
@@ -109,8 +123,8 @@ const LoginPage = () => {
                 )}
               </span>
               <div className="flex text-sm mt-2 flex-col">
-              <h3 className='flex text-md py-2'><input type="checkbox" className='mr-3' />Remember me</h3>
-              <h3 className="text-blue-600 cursor-pointer text-md py-2">Forgot Password?</h3>
+                <h3 className='flex text-md py-2'><input type="checkbox" className='mr-3' />Remember me</h3>
+                <h3 className="text-blue-600 cursor-pointer text-md py-2">Forgot Password?</h3>
               </div>
             </div>
             <button
@@ -119,14 +133,14 @@ const LoginPage = () => {
             >
               Sign in
             </button>
-            <ToastContainer/>
+            <ToastContainer />
             <div className="flex text-sm font-bold justify-evenly">
               <h3 className='text-center'>Haven't Registered Yet!</h3> <Link to="/register" className="text-purple-600 text-center">Register Now</Link>
             </div>
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
