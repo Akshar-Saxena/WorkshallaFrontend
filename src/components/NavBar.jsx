@@ -1,11 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { logout } from '../auth/authReducer'
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 
 export default function NavBar() {
+  // const notify = () => {
+  //   toast.success("Successfully logged in")
+  // }
 
+  
   const [isOpenMenu, setIsOpenMenu] = useState(false)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+  
+  // useEffect(()=>{
+  //   if(isAuthenticated){
+  //     notify()
+  //   }
+  // },[isAuthenticated])
 
   const toggleHandler = () => {
     setIsOpenMenu(!isOpenMenu)
@@ -45,12 +61,16 @@ export default function NavBar() {
       </div>
       {/* Left Div ends */}
 
-      {/* Sign Up and Register Buttons */}
-      <div className='flex min-[425px]: w-[300px] min-[280px]:hidden md:flex md:justify-end xl:w-[400px] '>
-        <button onClick={()=>navigate('/login')} className='py-2 px-4 rounded mx-2 my-3 text-[13px] font-medium transition hover:bg-purple-600 hover:outline hover: outline-1 hover:outline-purple-600 hover:text-white md:text-[10px] xl:text-lg'>Sign In</button>
-        <button onClick={()=>navigate('/register')} className='py-2 px-4 rounded mx-2 my-3 text-[13px] bg-purple-600 text-white font-medium transition  hover:outline hover: outline-1 hover:outline-purple-600 hover:text-purple-600 hover:bg-white md:text-[10px] xl:text-lg'>Register</button>
-      </div>
-      {/* Sign Up and Register Buttons ends*/}
+      {isAuthenticated ? <div className='flex'>
+        <button className='w-[120px] py-1 outline outline-1 outline-[#946cc5] rounded-lg font-medium hover:bg-[#946cc5] hover:text-white mx-8 text-xs' >Your Task</button>
+        <img className='w-[40px] cursor-pointer' src="assets/profile.png" alt="" />
+        <button onClick={() => dispatch(logout())} className='w-[100px] bg-[#946cc5] rounded-lg text-white mx-8 text-xs hover:bg-[#2d1b46]'>Log out</button>
+      </div> :
+        <div className='flex min-[425px]: w-[300px] min-[280px]:hidden md:flex md:justify-end xl:w-[400px] '>
+          <button onClick={() => navigate('/login')} className='py-2 px-4 rounded mx-2 my-3 text-[13px] font-medium transition hover:bg-purple-600 hover:outline hover: outline-1 hover:outline-purple-600 hover:text-white md:text-[10px] xl:text-lg'>Sign In</button>
+          <button onClick={() => navigate('/register')} className='py-2 px-4 rounded mx-2 my-3 text-[13px] bg-purple-600 text-white font-medium transition  hover:outline hover: outline-1 hover:outline-purple-600 hover:text-purple-600 hover:bg-white md:text-[10px] xl:text-lg'>Register</button>
+        </div>}
+        <ToastContainer />
     </div>
   )
 }
