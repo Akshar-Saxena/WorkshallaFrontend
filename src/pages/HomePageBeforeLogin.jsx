@@ -5,8 +5,28 @@ import CompaniesCard from '../components/CompaniesCard'
 import ServicesTitles from '../constants/ServicesTitles.json'
 import ChallengeCard from '../components/ChallengeCard'
 import Footer from '../components/Footer'
+import axios from 'axios'
 
 export default function HomePageBeforeLogin() {
+
+    const options = {
+        method: 'POST',
+        url: 'https://workshala-api.onrender.com/auth/login/',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: {
+            email: 'akshar2@example.com',
+            password: 'aksharsaxena'
+        }
+    }
+
+    axios.request(options).then(function (response){
+        console.log(response.data);
+    }).catch(function (error){
+        console.log(error)
+    })
+
     return (
         <>
             {/* NavBar starts here */}
