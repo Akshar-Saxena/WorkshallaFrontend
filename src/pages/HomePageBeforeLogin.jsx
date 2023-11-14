@@ -5,7 +5,6 @@ import CompaniesCard from '../components/CompaniesCard'
 import ServicesTitles from '../constants/ServicesTitles.json'
 import ChallengeCard from '../components/ChallengeCard'
 import Footer from '../components/Footer'
-import axios from 'axios'
 
 export default function HomePageBeforeLogin() {
 
@@ -23,7 +22,7 @@ export default function HomePageBeforeLogin() {
 
                     {/* Welcome div */}
                     <div className='flex place-items-center min-[280px]:w-[100%]'>
-                        <img src="../src/assets/welcomeHand.png" alt="" />
+                        <img src="assets/welcomeHand.png" alt="" />
                         <h3 className='text-gray-400 text-sm font-medium min-[280px]:text-xs lg:text-base'>WELCOME TO WORKSHALA</h3>
                     </div>
                     {/* Welcome div ends */}
