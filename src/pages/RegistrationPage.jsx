@@ -85,7 +85,7 @@ export default function RegistrationPage() {
         size={25}/>
         </div>}
       <div className="top-0 -z-10  w-[42%] min-[280px]:absolute opacity-70 min-[280px]:w-full min-[280px]:h-[100vh] md:static md:w-[48%]">
-        <img className='min-[280px]:w-full min-[280px]:h-full' src="../src/assets/regPageImage.png" alt="" />
+        <img className='min-[280px]:w-full min-[280px]:h-full' src="assets/regPageImage.png" alt="" />
       </div>
       <div className="w-[28%] min-[280px]:w-[80%] md:w-[28%]">
         <h1 className='text-4xl font-bold pb-7'>Register</h1>

@@ -67,7 +67,7 @@ const LoginPage = () => {
         size={25} />
       </div>}
 
-      <img src="../src/assets/loginImage.png" alt="Login" className="min-[280px]:absolute min-[280px]:w-full min-[280px]:h-screen min-[280px]:opacity-30 min-[280px]:-z-10 md:w-[68%] md:h-fit md:static md:opacity-100 lg:w-[42%]"/>
+      <img src="assets/loginImage.png" alt="Login" className="min-[280px]:absolute min-[280px]:w-full min-[280px]:h-screen min-[280px]:opacity-30 min-[280px]:-z-10 md:w-[68%] md:h-fit md:static md:opacity-100 lg:w-[42%]"/>
 
       <div className="min-[280px]:w-[80%] flex justify-center items-center lg:w-[32%]">
         <div className="w-full">
@@ -104,9 +104,9 @@ const LoginPage = () => {
                 className="cursor-pointer absolute right-2 top-[41px]"
               >
                 {showPassword ? (
-                  <img src="../src/assets/openEye.png" className='animate-pulse w-[24px]' alt="" />
+                  <img src="assets/openEye.png" className='animate-pulse w-[24px]' alt="" />
                 ) : (
-                  <img src="../src/assets/closeEye.png" className='animate-pulse w-[24px]' alt="" />
+                  <img src="assets/closeEye.png" className='animate-pulse w-[24px]' alt="" />
                 )}
               </span>
               <div className="flex text-sm mt-2 flex-col">
