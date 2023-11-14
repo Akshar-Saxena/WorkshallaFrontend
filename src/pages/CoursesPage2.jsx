@@ -10,7 +10,7 @@ export default function CoursesPage2()
         <NavBar />
 
         <div className="bg-rose-50 p-6" >
-          <h2 className="ml-10 text-xl font-bold">Courses for you</h2>
+          <h2 className="ml-10 text-xl font-bold min-[280px]:text-xl">Courses for you</h2>
        </div>
 
        <div className='flex flex-wrap justify-center'>

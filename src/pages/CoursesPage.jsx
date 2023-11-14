@@ -13,18 +13,17 @@ export default function CoursesPage()
            <NavBar />
            <header className='flex  w-5/6 m-auto place-items-center justify-between min-[280px]:flex-col-reverse lg:flex-row lg:my-10'>
 
-{/* Left Hero Section */}
+
 <div className='w-1/2 min-[280px]:w-5/6 lg:w-[400px]'>
 
    
 
-    {/* Title */}
-    <h1 className='font-bold text-3xl my-2 '>Learn on Your Schedule</h1>
-    {/* Title ends */}
 
-    {/* Desc */}
+    <h1 className='font-bold text-3xl my-2 '>Learn on Your Schedule</h1>
+
+
     <p className=''>Study any topic, anytime explore thousands of courses <br />for the lowest price ever!</p>
-    {/* Desc ends */}
+
   
         
     <input className='text-sm h-[35px] w-full pl-2 rounded-2xl shadow-xl mt-6' type="text" placeholder='What do you want to learn?' />
@@ -37,7 +36,7 @@ export default function CoursesPage()
 </div>
 
 
-    <img className="" src="../src/assets/coursesBg (1).png" alt="" />
+    <img  src="../src/assets/coursesBg (1).png" alt="" />
     
 
 
@@ -47,7 +46,7 @@ export default function CoursesPage()
    <div className='pt-6 pl-10 pb-10'>
                 
                 <h1 className='text-left ml-4 mb-8 font-bold'>Courses Categories</h1>
-                <div className='flex '>
+                <div className='flex'>
                     {CategoriesTitles.map((element, id) => (
                         <Categoriescard title={element.title} key={id} />
                     ))}

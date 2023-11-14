@@ -56,13 +56,13 @@ export default function CoursesCard()
           <hr className='h-[1px] bg-gray-600 mt-12 mb-4' /> 
           <div className="flex ml-8 ">
            <h2 className="text-blue-500 font-bold">FREE</h2>
-            <div className="flex ml-28">
-              <img src="../src/assets/starImage.png" alt="" className="" />
-              <h6 className="">3 star</h6>
+            <div className="flex ml-28 ">
+              <img src="../src/assets/starImage.png" alt=""  />
+              <h6>3 star</h6>
             </div>  
             <div className="flex ml-3">
-              <img src="../src/assets/userImage.png" alt="" className="" />
-              <h6>321 enrolled</h6>
+              <img src="../src/assets/userImage.png" alt=""  />
+              <h6 className="ml-1">321 enrolled</h6>
             </div>
         </div>  
         </div> 
