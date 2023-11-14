@@ -6,7 +6,10 @@ import ServicesTitles from '../constants/ServicesTitles.json'
 import ChallengeCard from '../components/ChallengeCard'
 import Footer from '../components/Footer'
 
+
 export default function HomePageBeforeLogin() {
+
+
     return (
         <>
             {/* NavBar starts here */}
@@ -21,7 +24,7 @@ export default function HomePageBeforeLogin() {
 
                     {/* Welcome div */}
                     <div className='flex place-items-center min-[280px]:w-[100%]'>
-                        <img src="../src/assets/welcomeHand.png" alt="" />
+                        <img src="assets/welcomeHand.png" alt="" />
                         <h3 className='text-gray-400 text-sm font-medium min-[280px]:text-xs lg:text-base'>WELCOME TO WORKSHALA</h3>
                     </div>
                     {/* Welcome div ends */}
@@ -46,8 +49,8 @@ export default function HomePageBeforeLogin() {
 
                 {/* Right Hero Section ends*/}
                 <div className='w-3/6 min-[280px]:w-[250px] min-[425px]:w-[400px] lg:w-[500px]' >
-                {/* Hero Image */}
-                    <img src="../src/assets/heroImage.png" alt="" />
+                    {/* Hero Image */}
+                    <img src="assets/heroImage.png" alt="" />
                 </div>
                 {/* Right Hero Section ends*/}
 
@@ -101,6 +104,7 @@ export default function HomePageBeforeLogin() {
                 </div>
             </div>
             {/* Challenges Section ends here */}
+
 
 
             {/* Footer Section starts here */}

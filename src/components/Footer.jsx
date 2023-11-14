@@ -37,21 +37,21 @@ export default function Footer() {
                     <h2 className='font-bold text-2xl'>Apply on the go</h2>
                     <h3 className='text-[#946CC3]'>Get real-time job updates on our App</h3>
                     <div className='flex justify-center place-items-center'>
-                        <img className='w-[50%]' src="../src/assets/googleplay.png" alt="" />
-                        <img className='w-[60%]' src="../src/assets/appstore.png" alt="" />
+                        <img className='w-[50%]' src="assets/googleplay.png" alt="" />
+                        <img className='w-[60%]' src="assets/appstore.png" alt="" />
                     </div>
                 </div>
             </div>
         </div>
         <div className='bg-[#251636] flex justify-between py-6 pl-8 min-[280px]:flex-col md:flex-row'>
-            <img className='w-[170px]' src="../src/assets/mainLogo.png" alt="" />
+            <img className='w-[170px]' src="assets/mainLogo.png" alt="" />
             <div>
                 <h2 className='text-gray-500 min-[280px]:text-sm'>Join with us</h2>
                 <div className='flex'>
-                    <img className='pr-4' src="../src/assets/instagramLogo.png" alt="" />
-                    <img className='px-4' src="../src/assets/twitterLogo.png" alt="" />
-                    <img className='px-4' src="../src/assets/facebookLogo.png" alt="" />
-                    <img className='px-4' src="../src/assets/linkedin.png" alt="" />
+                    <img className='pr-4' src="assets/instagramLogo.png" alt="" />
+                    <img className='px-4' src="assets/twitterLogo.png" alt="" />
+                    <img className='px-4' src="assets/facebookLogo.png" alt="" />
+                    <img className='px-4' src="assets/linkedin.png" alt="" />
                 </div>
             </div>
             <div>
