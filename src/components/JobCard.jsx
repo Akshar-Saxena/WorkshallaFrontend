@@ -14,17 +14,17 @@ export const JobCard = () => {
                     <h1 className='min-[280px]:text-lg text-2xl font-bold'>Fundraising Volunteering</h1>
                     <p className='text-gray-500 min-[280px]:text-sm'>Odisha Development Management Programme (ODMP)</p>
                 </div>
-                <img src="assets/tataLogo.png" alt="" />
+                <img src="../src/assets/tataLogo.png" alt="" />
             </div>
 
             <div className='lg:flex lg:justify-between lg:mt-3'>
                 <ul className='lg:flex lg:flex-col'>
-                    <li className='flex text-gray-500 py-2 lg:text-xs'><img className='w-[20px] mr-2' src="assets/workFromHome.png" alt="" />Work from Home</li>
-                    <li className='flex text-gray-500 py-2 lg:text-xs'><img className='w-[20px] mr-2' src="assets/backInTime.png" alt="" />1 Week</li>
+                    <li className='flex text-gray-500 py-2 lg:text-xs'><img className='w-[20px] mr-2' src="../src/assets/workFromHome.png" alt="" />Work from Home</li>
+                    <li className='flex text-gray-500 py-2 lg:text-xs'><img className='w-[20px] mr-2' src="../src/assets/backInTime.png" alt="" />1 Week</li>
                 </ul>
                 <ul className='lg:flex lg:flex-col'>
-                    <li className='flex text-gray-500 py-2 lg:text-xs'><img className='w-[20px] mr-2' src="assets/shuttle.png" alt="" />Starts immediately</li>
-                    <li className='flex text-gray-500 py-2 lg:text-xs'><img className='w-[20px] mr-2' src="assets/salary.png" alt="" />225-5,000/week</li>
+                    <li className='flex text-gray-500 py-2 lg:text-xs'><img className='w-[20px] mr-2' src="../src/assets/shuttle.png" alt="" />Starts immediately</li>
+                    <li className='flex text-gray-500 py-2 lg:text-xs'><img className='w-[20px] mr-2' src="../src/assets/salary.png" alt="" />225-5,000/week</li>
                 </ul>
             </div>
 

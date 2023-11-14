@@ -1,27 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css"
-import PropagateLoader from "react-spinners/PropagateLoader";
 
 
 const LoginPage = () => {
-
-  const [loading, setLoading] = useState(false)
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  })
-
-  const notify = () => {
-    toast.success("Successfully logged in")
-  }
-
-  const notifyError = (msg) => {
-    toast.error(msg)
-  }
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -67,7 +50,7 @@ const LoginPage = () => {
         size={25} />
       </div>}
 
-      <img src="assets/loginImage.png" alt="Login" className="min-[280px]:absolute min-[280px]:w-full min-[280px]:h-screen min-[280px]:opacity-30 min-[280px]:-z-10 md:w-[68%] md:h-fit md:static md:opacity-100 lg:w-[42%]"/>
+      <img src="../src/assets/loginImage.png" alt="Login" className="min-[280px]:absolute min-[280px]:w-full min-[280px]:h-screen min-[280px]:opacity-30 min-[280px]:-z-10 md:w-[68%] md:h-fit md:static md:opacity-100 lg:w-[42%]"/>
 
       <div className="min-[280px]:w-[80%] flex justify-center items-center lg:w-[32%]">
         <div className="w-full">
@@ -80,23 +63,23 @@ const LoginPage = () => {
               <input
                 type="email"
                 id="email"
-                onChange={formDataHandler}
-                className="text-xs h-[35px] w-full pl-3 rounded-md outline outline-1 outline-black"
+                className="w-full mt-2 p-2 border-gray-300-rounded-lg"
                 placeholder="Enter your email"
               />
             </div>
 
-            <div className="py-3 relative">
-              <label htmlFor="password" className="block temdium text-black">
+            <div className="mb-10">
+              <label htmlFor="password" className="block text-lg font-medium text-black-600">
                 Password
               </label>
-
+              
               <input
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 name="password"
-                onChange={formDataHandler}
-                className="text-xs h-[35px] w-full pl-3 rounded-md outline outline-1 outline-black"
+                value={password}
+                onChange={handlePasswordChange}
+                className="w-full mt-2 p-2 border-gray-300-rounded-lg"
                 placeholder="Enter your password"
               />
               <span
@@ -104,32 +87,31 @@ const LoginPage = () => {
                 className="cursor-pointer absolute right-2 top-[41px]"
               >
                 {showPassword ? (
-                  <img src="assets/openEye.png" className='animate-pulse w-[24px]' alt="" />
+                  <img src="../src/assets/openEye.png" className='animate-pulse w-[24px]' alt="" />
                 ) : (
-                  <img src="assets/closeEye.png" className='animate-pulse w-[24px]' alt="" />
+                  <img src="../src/assets/closeEye.png" className='animate-pulse w-[24px]' alt="" />
                 )}
               </span>
-              <div className="flex text-sm mt-2 flex-col">
-                <h3 className='flex text-md py-2'><input type="checkbox" className='mr-3' />Remember me</h3>
-                <h3 className="text-blue-600 cursor-pointer text-md py-2">Forgot Password?</h3>
+              <div className="flex text-sm mt-2">
+                <img src="../src/assets/rectangleTickBox.png" className="m-1"/>
+                <h3>Remember me</h3>
+                <h3 className="pl-40">Forgot Password?</h3>
               </div>
             </div>
             <button
-              onClick={loginHandler}
-              className="w-full py-2 px-5 bg-[#946CC3] text-white text-xs rounded-md my-4"
+              type="submit"
+              className="w-full mt-2 p-2 border-gray-300-rounded-lg hover:bg-rgba(255, 255, 255, 1)- transition duration-300"
             >
               Sign in
             </button>
-
-            <ToastContainer />
-
-            <div className="flex text-sm font-bold justify-evenly">
-              <h3 className='text-center'>Haven't Registered Yet!</h3> <Link to="/register" className="text-purple-600 text-center">Register Now</Link>
+        
+            <div className=" flex text-sm font-bold mt-6 ml-14">
+             <h3>Haven't Registered Yet!</h3> <Link to="/register" className="text-purple-600">Register Now</Link>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      </div>
   );
 };
 

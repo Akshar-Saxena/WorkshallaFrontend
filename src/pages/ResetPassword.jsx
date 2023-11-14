@@ -37,7 +37,7 @@ export default function ResetPassword() {
 
     return (
         <div className='flex justify-evenly place-items-center h-[100vh] m-auto md:flex-col lg:flex-row'>
-            <img className='w-[45%] min-[280px]:absolute min-[280px]:-z-10 min-[280px]:opacity-70 min-[280px]:h-full min-[280px]:w-full md:static md:h-auto md:opacity-100 md:w-[60%] lg:h-auto lg:w-[45%]' src="assets/resetPassword.png" alt="" />
+            <img className='w-[45%] min-[280px]:absolute min-[280px]:-z-10 min-[280px]:opacity-70 min-[280px]:h-full min-[280px]:w-full md:static md:h-auto md:opacity-100 md:w-[60%] lg:h-auto lg:w-[45%]' src="../src/assets/resetPassword.png" alt="" />
             <div className='min-[280px]:w-full lg:w-[35%] flex flex-col justify-center place-items-center'>
                 <div className='min-[280px]:w-[80%]'>
                     <h1 className='font-bold md:text-4xl pb-10 min-[280px]:text-2xl'>Reset Password</h1>
