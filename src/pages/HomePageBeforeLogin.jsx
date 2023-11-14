@@ -9,24 +9,6 @@ import axios from 'axios'
 
 export default function HomePageBeforeLogin() {
 
-    const options = {
-        method: 'POST',
-        url: 'https://workshala-api.onrender.com/auth/login/',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        data: {
-            email: 'akshar2@example.com',
-            password: 'aksharsaxena'
-        }
-    }
-
-    axios.request(options).then(function (response){
-        console.log(response.data);
-    }).catch(function (error){
-        console.log(error)
-    })
-
     return (
         <>
             {/* NavBar starts here */}
@@ -67,7 +49,7 @@ export default function HomePageBeforeLogin() {
                 {/* Right Hero Section ends*/}
                 <div className='w-3/6 min-[280px]:w-[250px] min-[425px]:w-[400px] lg:w-[500px]' >
                 {/* Hero Image */}
-                    <img src="../src/assets/heroImage.png" alt="" />
+                    <img src="./heroImage.png" alt="" />
                 </div>
                 {/* Right Hero Section ends*/}
 
