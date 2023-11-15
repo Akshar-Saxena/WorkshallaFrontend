@@ -4,12 +4,16 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 
 export default function RegistrationPage() {
 
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const notify = () => {
     toast.success("Registration Success")
@@ -39,6 +43,10 @@ export default function RegistrationPage() {
     }
   }
 
+  const userLoggedIn = () => {
+    dispatch(login())
+    navigate('/')
+  }
 
   const formDataHandler = (e) => {
     setFormData((previewData) => {
@@ -66,12 +74,15 @@ export default function RegistrationPage() {
       console.log(response.data);
       setLoading(false)
       notify()
+      userLoggedIn()
     }).catch(function (error) {
-      if(error.response.data.email == "user with this email already exists.") {
-        notifyError("User with this email already exists")
-        setLoading(false)
+      try {
+        if (error.response.data.email == "user with this email already exists.") {
+          notifyError("User with this email already exists")
+          setLoading(false)
+        }
       }
-      else{
+      catch (e) {
         notifyError("Error! Try again")
       }
     })
@@ -82,8 +93,8 @@ export default function RegistrationPage() {
       {loading && <div className='w-full h-[100vh] bg-white flex justify-center place-items-center opacity-75 absolute top-0'><PropagateLoader
         color={"#946cc3"}
         loading={loading}
-        size={25}/>
-        </div>}
+        size={25} />
+      </div>}
       <div className="top-0 -z-10  w-[42%] min-[280px]:absolute opacity-70 min-[280px]:w-full min-[280px]:h-[100vh] md:static md:w-[48%]">
         <img className='min-[280px]:w-full min-[280px]:h-full' src="assets/regPageImage.png" alt="" />
       </div>
