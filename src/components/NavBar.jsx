@@ -11,12 +11,12 @@ export default function NavBar() {
   //   toast.success("Successfully logged in")
   // }
 
-  
+
   const [isOpenMenu, setIsOpenMenu] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-  
+
   // useEffect(()=>{
   //   if(isAuthenticated){
   //     notify()
@@ -39,17 +39,28 @@ export default function NavBar() {
         <ul className='flex place-items-center'>
           <li><img src="assets/menu.png" alt="" className='w-[20px] min-[280px]:block min-[768px]:hidden' onClick={toggleHandler} /></li>
           <Link to="/"><li className='cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base'>Home</li></Link>
-          <li className='cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base'>Services</li>
+          <Link to="/courses"><li className='cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base'>Courses</li></Link>
           <Link to="/companies"><li className='cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base'>Companies</li></Link>
           <Link to="/jobs"><li className='cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base'>Jobs</li></Link>
         </ul>
         {/* Menu List items end */}
 
         {/* hamburger menu */}
-        {isOpenMenu && (
+        {isOpenMenu && isAuthenticated && (
           <ul className='flex flex-col justify-center place-items-center absolute w-full top-20 right-0 bg-white animate-[slideFromTop_0.4s_ease-in-out] outline outline-1 outline-black'>
             <Link to="/"><li className='p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]'>Home</li></Link>
-            <Link><li className='p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]'>Services</li></Link>
+            <Link to="/courses"><li className='p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]'>Courses</li></Link>
+            <Link to="/companies"><li className='p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]'>Companies</li></Link>
+            <Link to="/jobs"><li className='p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]'>Jobs</li></Link>
+            <Link to="/"><li className='p-2 my-2 rounded-md bg-[#946cc3] text-white w-[100%]'>Your Task</li></Link>
+            <Link to="/profile"><li className='p-2 my-2 rounded-md bg-[#946cc3] text-white w-[100%]'>My Profile</li></Link>
+            <button onClick={() => dispatch(logout())} className='p-2 my-2 rounded-md bg-[#946cc3] text-white w-[90px]'>Log out</button>
+          </ul>
+        )}
+        {isOpenMenu && !isAuthenticated && (
+          <ul className='flex flex-col justify-center place-items-center absolute w-full top-20 right-0 bg-white animate-[slideFromTop_0.4s_ease-in-out] outline outline-1 outline-black'>
+            <Link to="/"><li className='p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]'>Home</li></Link>
+            <Link to="/courses"><li className='p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]'>Courses</li></Link>
             <Link to="/companies"><li className='p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]'>Companies</li></Link>
             <Link to="/jobs"><li className='p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]'>Jobs</li></Link>
             <Link to="/login"><li className='p-2 my-2 rounded-md bg-[#946cc3] text-white w-[100%]'>Sign In</li></Link>
@@ -61,16 +72,16 @@ export default function NavBar() {
       </div>
       {/* Left Div ends */}
 
-      {isAuthenticated ? <div className='flex'>
+      {isAuthenticated ? <div className='flex  min-[280px]:hidden  min-[768px]:flex'>
         <button className='w-[120px] py-1 outline outline-1 outline-[#946cc5] rounded-lg font-medium hover:bg-[#946cc5] hover:text-white mx-8 text-xs' >Your Task</button>
-        <img className='w-[40px] cursor-pointer' src="assets/profile.png" alt="" />
+        <Link to="/profile"><img className='w-[40px] cursor-pointer' src="assets/profile.png" alt="" /></Link>
         <button onClick={() => dispatch(logout())} className='w-[100px] bg-[#946cc5] rounded-lg text-white mx-8 text-xs hover:bg-[#2d1b46]'>Log out</button>
       </div> :
         <div className='flex min-[425px]: w-[300px] min-[280px]:hidden md:flex md:justify-end xl:w-[400px] '>
           <button onClick={() => navigate('/login')} className='py-2 px-4 rounded mx-2 my-3 text-[13px] font-medium transition hover:bg-purple-600 hover:outline hover: outline-1 hover:outline-purple-600 hover:text-white md:text-[10px] xl:text-lg'>Sign In</button>
           <button onClick={() => navigate('/register')} className='py-2 px-4 rounded mx-2 my-3 text-[13px] bg-purple-600 text-white font-medium transition  hover:outline hover: outline-1 hover:outline-purple-600 hover:text-purple-600 hover:bg-white md:text-[10px] xl:text-lg'>Register</button>
         </div>}
-        <ToastContainer />
+      <ToastContainer />
     </div>
   )
 }

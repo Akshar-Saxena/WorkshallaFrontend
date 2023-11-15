@@ -25,8 +25,14 @@ const LoginPage = () => {
     toast.error(msg)
   }
 
-  const userLoggedIn = () => {
+  const clearCookie = (cookieName) => {
+    document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+}
+
+  const userLoggedIn = (user) => {
     dispatch(login())
+    clearCookie("user")
+    document.cookie = `user=${user};`
     navigate('/')
   }
 
@@ -60,10 +66,10 @@ const LoginPage = () => {
   const loginHandler = () => {
     setLoading(true)
     axios.request(options).then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       setLoading(false)
       notify()
-      userLoggedIn()
+      userLoggedIn(response.data.email)
     }).catch(function (error) {
       notifyError("Invalid Username or Password")
       setLoading(false)
