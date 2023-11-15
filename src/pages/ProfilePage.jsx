@@ -8,7 +8,7 @@ export default function ProfilePage() {
 
         <div className="flex items-center min-[280px]:flex-col md:flex-row">
           <img
-            src="../src/assets/profileImage.png"
+            src="assets/profileImage.png"
             alt="Profile"
             className="w-30 h-30"
           />
