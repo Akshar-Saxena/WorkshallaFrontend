@@ -8,8 +8,6 @@ import Footer from '../components/Footer'
 
 
 export default function HomePageBeforeLogin() {
-
-
     return (
         <>
             {/* NavBar starts here */}
