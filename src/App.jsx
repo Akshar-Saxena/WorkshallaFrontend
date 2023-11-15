@@ -8,10 +8,12 @@ import HomePage from './pages/HomePage'
 import RegistrationPage from './pages/RegistrationPage'
 import LoginPage from './pages/LoginPage'
 import CompaniesPage from './pages/CompaniesPage'
+import CoursesPage from './pages/CoursesPage'
 import { JobsPage } from './pages/JobsPage'
 import ResetPassword from './pages/ResetPassword'
 import { useSelector } from 'react-redux'
 import PrivateRoute from './PrivateRoute/PrivateRoute'
+import ProfilePage from './pages/ProfilePage'
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
             <Route exact path='/companies' element={<CompaniesPage />} />
             <Route exact path='/jobs' element={<JobsPage />} />
+            <Route exact path='/courses' element={<CoursesPage/>} />
+            <Route exact path='/profile' element={<ProfilePage/>} />
           </Route>
         </Routes>
       </Router>
