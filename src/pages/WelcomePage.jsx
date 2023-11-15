@@ -34,7 +34,7 @@ export default function WelcomePage()
             <h3 className="mt-8 ml-6 text-lg font-semibold">Your Skills</h3>
             <div className='flex min-[280px]:flex-col md:flex-row'>
                 <ul className='flex-col'>
-                    <li className='flex text-black bg-[#CAB7E180] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg min-[280px]:pl-8 '>Finance</li>
+                    <li className='flex text-black bg-[#CAB7E180] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg min-[280px]:pl-8 '>Blockchain</li>
                     <li className='flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg mt-4'>Design</li>
                     <li className='flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg mt-4'>Marketing</li>
                 </ul>
@@ -44,9 +44,9 @@ export default function WelcomePage()
                    <li className='flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg mt-4'>Writing</li>
                 </ul>
                 <ul className='flex-col ml-8 min-[280px]:mt-4 min-[280px]:ml-1 md:mt-0'>
-                   <li className='flex text-black bg-[#CAB7E180] w-fit pl-8 pr-16 pt-1 pb-1 rounded-lg'>Consultancy</li>
+                   <li className='flex text-black bg-[#CAB7E180] w-fit pl-8 pr-16 pt-1 pb-1 rounded-lg'>Javascript</li>
                    <li className='flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg mt-4'>Database</li>
-                   <li className='flex text-black bg-[#CAB7E180] w-fit mt-4 pl-5 pr-6 pt-1 pb-1 rounded-lg'>Web development</li>
+                   <li className='flex text-black bg-[#CAB7E180] w-fit mt-4 pl-5 pr-6 pt-1 pb-1 rounded-lg min-[280px]:pl-8'>Web development</li>
                 </ul>
             </div>
              <button className=" text-black bg-white outline outline-purple-600 outline-1 w-fit pl-16 pr-20 rounded-md mt-8 font-semibold hover:bg-purple-900 hover:text-white">Submit</button>
