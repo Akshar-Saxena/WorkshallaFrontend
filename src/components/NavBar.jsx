@@ -14,6 +14,14 @@ export default function NavBar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const clearCookie = (cookieName) => {
+        document.cookie =
+            cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+    };
+    const logoutRedirect = () => {
+        clearCookie("user");
+        dispatch(logout());
+    };
 
     // useEffect(() => {
     //     if (isAuthenticated && flag2) {
@@ -41,12 +49,14 @@ export default function NavBar() {
 
                 {/* Menu List items */}
                 <ul className="flex place-items-center">
-                    <li>
+                    <li
+                        className="min-[280px]:block min-[768px]:hidden"
+                        onClick={toggleHandler}
+                    >
                         <img
                             src="assets/menu.png"
                             alt=""
-                            className="w-[20px] min-[280px]:block min-[768px]:hidden"
-                            onClick={toggleHandler}
+                            className="w-[20px]"
                         />
                     </li>
                     <Link to="/">
@@ -56,7 +66,7 @@ export default function NavBar() {
                     </Link>
                     <Link to="/courses">
                         <li className="cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base">
-                            Courses
+                            Services
                         </li>
                     </Link>
                     <Link to="/companies">
@@ -82,7 +92,7 @@ export default function NavBar() {
                         </Link>
                         <Link to="/courses">
                             <li className="p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]">
-                                Courses
+                                Services
                             </li>
                         </Link>
                         <Link to="/companies">
@@ -164,7 +174,7 @@ export default function NavBar() {
                         />
                     </Link>
                     <button
-                        onClick={() => dispatch(logout())}
+                        onClick={logoutRedirect}
                         className="w-[100px] bg-[#946cc5] rounded-lg text-white mx-8 text-xs hover:bg-[#2d1b46]"
                     >
                         Log out

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "../components/NavBar";
 import Categoriescard from "../components/Categoriescard";
 import CategoriesTitles from "../constants/CategoriesTitles.json";
@@ -9,6 +9,10 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import { useState } from "react";
 
 export default function CoursesPage() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [courses, setCourses] = useState([
         "Data Analysis Using R",
         "Intermediate Python",
@@ -24,7 +28,7 @@ export default function CoursesPage() {
         setLoading(true);
         let config = {
             method: "get",
-            url: `https://course-api-gb35.onrender.com/recommendation_func/${search}`,
+            url: `https://course-api-gb35.onrender.com/recommendation_func/${search.trim()}`,
             headers: {
                 "Access-Control-Allow-Origin": "http://localhost:5173",
                 "Access-Control-Allow-Methods": "GET",
