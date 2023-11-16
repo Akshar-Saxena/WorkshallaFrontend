@@ -10,7 +10,6 @@ export default function NavBar() {
     // const notify = () => {
     //     toast.success("Successfully logged in");
     // };
-
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
