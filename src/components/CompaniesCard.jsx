@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CompaniesCard() {
+    const navigate = useNavigate();
     return (
         <div className="pt-10 rounded-lg outline outline-purple-600 outline-1 ml-1 mr-8 pb-5 flex flex-col justify-center place-items-center min-[280px]:w-[240px] min-[280px]:px-12">
             <img className="w-14" src="assets/companyLogo1.png" alt="" />
@@ -14,7 +16,10 @@ export default function CompaniesCard() {
             <p className="text-center min-[280px]:text-xs">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             </p>
-            <button className="bg-purple-700 mt-10 text-white py-2 px-12 rounded-lg hover:bg-purple-900 min-[280px]:px-2 min-[280px]:text-xs">
+            <button
+                onClick={() => navigate("/jobs")}
+                className="bg-purple-700 mt-10 text-white py-2 px-12 rounded-lg hover:bg-purple-900 min-[280px]:px-2 min-[280px]:text-xs"
+            >
                 View Jobs
             </button>
         </div>

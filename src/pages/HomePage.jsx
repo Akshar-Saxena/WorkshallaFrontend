@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import ServicesCard from "../components/ServicesCard";
 import CompaniesCard from "../components/CompaniesCard";
@@ -8,6 +8,25 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 export default function HomePageBeforeLogin() {
+    const [desc, setDesc] = useState(
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam cum eius odio dolorem natus, delectus ipsatempora eum est perferendis odit minus esse minimaconsequuntur amet! Veritatis eligendi eum libero?"
+    );
+    const [button, setButton] = useState("More");
+
+    const readmoreHandler = () => {
+        if (button == "More")
+            setDesc(
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam cum eius odio dolorem natus, delectus ipsatempora eum est perferendis odit minus esse minimaconsequuntur amet! Veritatis eligendi eum libero? Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam cum eius odio dolorem natus, delectus ipsatempora eum est perferendis odit minus esse minimaconsequuntur amet! Veritatis eligendi eum libero?"
+            );
+        setButton("Less");
+        if (button == "Less") {
+            setDesc(
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam cum eius odio dolorem natus, delectus ipsatempora eum est perferendis odit minus esse minimaconsequuntur amet! Veritatis eligendi eum libero?"
+            );
+            setButton("More");
+        }
+    };
+
     const navigate = useNavigate();
     return (
         <>
@@ -37,19 +56,22 @@ export default function HomePageBeforeLogin() {
 
                     {/* Desc */}
                     <p className="md:text-sm min-[280px]:text-[10px] lg:text-base">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Veniam cum eius odio dolorem natus, delectus ipsa
-                        tempora eum est perferendis odit minus esse minima
-                        consequuntur amet! Veritatis eligendi eum libero?
+                        {desc}
                     </p>
                     {/* Desc ends */}
 
                     {/* Buttons div */}
                     <div className="flex min-[280px]:justify-start">
-                        <button className="py-2 mx-7 text-[13px] px-4 rounded my-3 bg-purple-600 text-white font-medium hover:outline hover: outline-1 hover:outline-purple-600 hover:text-purple-600 hover:bg-white md:text-[8px] min-[280px]:text-[10px] min-[280px]:px-1 md:text-sm md:px-3">
-                            Read More
+                        <button
+                            onClick={readmoreHandler}
+                            className="py-2 mx-7 text-[13px] px-4 rounded my-3 bg-purple-600 text-white font-medium hover:outline hover: outline-1 hover:outline-purple-600 hover:text-purple-600 hover:bg-white md:text-[8px] min-[280px]:text-[10px] min-[280px]:px-1 md:text-sm md:px-3"
+                        >
+                            Read {button}
                         </button>
-                        <button className="py-2 text-[13px] px-4 rounded mx-7 my-3 font-medium outline outline-1 outline-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white hover:outline-white md:text-[8px] min-[280px]:text-[10px] min-[280px]:px-1 min-[280px]:mx-0 md:text-sm md:px-3">
+                        <button
+                            onClick={() => navigate("/login")}
+                            className="py-2 text-[13px] px-4 rounded mx-7 my-3 font-medium outline outline-1 outline-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white hover:outline-white md:text-[8px] min-[280px]:text-[10px] min-[280px]:px-1 min-[280px]:mx-0 md:text-sm md:px-3"
+                        >
                             Start Today
                         </button>
                     </div>
