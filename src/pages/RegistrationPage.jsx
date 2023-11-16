@@ -6,8 +6,7 @@ import "react-toastify/dist/ReactToastify.css"
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
-
+import { login } from '../auth/authReducer';
 
 export default function RegistrationPage() {
 
@@ -45,7 +44,7 @@ export default function RegistrationPage() {
 
   const userLoggedIn = () => {
     dispatch(login())
-    navigate('/')
+    navigate('/welcome')
   }
 
   const formDataHandler = (e) => {
@@ -76,6 +75,7 @@ export default function RegistrationPage() {
       notify()
       userLoggedIn()
     }).catch(function (error) {
+      console.log(error)
       try {
         if (error.response.data.email == "user with this email already exists.") {
           notifyError("User with this email already exists")
@@ -83,6 +83,7 @@ export default function RegistrationPage() {
         }
       }
       catch (e) {
+        console.log(e)
         notifyError("Error! Try again")
       }
     })
