@@ -56,7 +56,7 @@ export default function NavBar() {
                     </Link>
                     <Link to="/courses">
                         <li className="cursor-pointer px-4 py-5 font-semibold transition hover:text-purple-600 min-[280px]:hidden  min-[768px]:block  min-[768px]:text-[10px] xl:text-base">
-                            Courses
+                            Services
                         </li>
                     </Link>
                     <Link to="/companies">
@@ -82,7 +82,7 @@ export default function NavBar() {
                         </Link>
                         <Link to="/courses">
                             <li className="p-2 my-2 rounded-md hover:bg-[#946cc3] hover:text-white w-[100%]">
-                                Courses
+                                Services
                             </li>
                         </Link>
                         <Link to="/companies">

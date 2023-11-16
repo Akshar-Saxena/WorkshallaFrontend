@@ -163,7 +163,10 @@ const LoginPage = () => {
                                     <input type="checkbox" className="mr-3" />
                                     Remember me
                                 </h3>
-                                <h3 className="text-blue-600 cursor-pointer text-md py-2">
+                                <h3
+                                    onClick={() => navigate("/reset")}
+                                    className="text-blue-600 cursor-pointer text-md py-2"
+                                >
                                     Forgot Password?
                                 </h3>
                             </div>
