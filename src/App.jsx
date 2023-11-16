@@ -28,10 +28,11 @@ function App() {
           <Route exact path='/register' element={<RegistrationPage />} />
           <Route exact path='/login' element={<LoginPage />} />
           <Route exact path='/reset' element={<ResetPassword />} />
+          <Route exact path='/companies' element={<CompaniesPage />} />
           
           <Route exact path='/welcome' element={<WelcomePage />} />
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
-            <Route exact path='/companies' element={<CompaniesPage />} />
+            
             <Route exact path='/jobs' element={<JobsPage />} />
             <Route exact path='/courses' element={<CoursesPage/>} />
             <Route exact path='/profile' element={<ProfilePage/>} />
