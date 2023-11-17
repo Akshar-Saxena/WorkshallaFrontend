@@ -10,7 +10,7 @@ export default function WelcomePage() {
     let c = true;
     useEffect(() => {
         if (c) {
-            toast.success("Successfully Registered");
+            toast.success("Successfully Registered, Please Verify Your Email");
         }
         c = false;
     }, []);

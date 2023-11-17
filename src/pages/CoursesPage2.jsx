@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "../components/NavBar";
 import CoursesCard from "../components/CoursesCard";
 import Footer from "../components/Footer";
 
 export default function CoursesPage2() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <NavBar />

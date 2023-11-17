@@ -41,6 +41,39 @@ export default function RegistrationPage() {
         },
     };
 
+    // const profile = async () => {
+    //     const response = await axios.get(
+    //         "https://workshala-api.onrender.com/auth/profiles/"
+    //     );
+    //     console.log(response.data);
+    //     var randomNumber = Math.floor(Math.random() * 901) + 100;
+    //     while (true) {
+    //         response.data.forEach((element) => {
+    //             if(element.id != randomNumber) {
+
+    //             }
+    //         });
+    //         randomNumber = Math.floor(Math.random() * 901) + 100;
+    //     }
+    // };
+
+    const profileOptions = {
+        method: "POST",
+        url: "https://workshala-api.onrender.com/auth/profiles/",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: {
+            fullname: formData.name.trim(),
+            bio: "Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text, which emphasizes the design over content of the layout. It is the standard placeholder text of the printing and publishing industries. The first use of Lorem ipsum is uncertain, though some have suggested the 1500s, when sections of Classical works were often used as dummy texts by printers to make type specimen books demonstrating different fonts. According to this account, the material was chosen based on Latin's familiarity as a lingua franca across Europe and the popularity of Classical works during the Middle Ages. Whenever it was first created, Lorem ipsum did not gain widespread popularity until the 1960s, when Letraset manufactured preprinted transfer sheets that featured the passage for use in the advertising industry. The sheets allowed typesetters and designers to cut out and rub on the text in various fonts, sizes, and formats for mock-ups and prototypes. In the 1980s, during the rise of the personal computer, Aldus Corporation developed its PageMaker desktop publishing software, which included Lorem ipsum as a word processing feature. Other word processors, including Microsoft Word, adopted the feature, and it became ubiquitous as a placeholder in Web design. Most Web content management systems, such as Joomla! and Wordpress, also feature a plug-in that generates Lorem ipsum.",
+            phone_number: formData.phoneNumber.trim(),
+            address: "",
+            skills: "",
+            experience: "",
+            user: "",
+        },
+    };
+
     const userLoggedIn = () => {
         dispatch(login());
         navigate("/welcome");

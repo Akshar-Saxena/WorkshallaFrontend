@@ -1,6 +1,12 @@
 import React from "react";
 import NavBar from "../components/NavBar";
+import { useDispatch } from "react-redux";
+import { logout } from "../auth/authReducer";
 export default function ProfilePage() {
+    const dispatch = useDispatch();
+    const profile = {
+        name: document.cookie.split(";")[0].split("=")[1],
+    };
     return (
         <>
             <NavBar />
@@ -67,6 +73,12 @@ export default function ProfilePage() {
                     plug-in that generates Lorem ipsum.
                 </p>
             </div>
+            <button
+                onClick={() => dispatch(logout())}
+                className="p-2 my-10 ml-10 rounded-md outline outline-1 outline-black bg-white text-black w-[190px] hover:bg-[#946cc5] hover:text-white"
+            >
+                Log out
+            </button>
         </>
     );
 }

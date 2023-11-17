@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CoursesPage() {
     useEffect(() => {
@@ -16,9 +17,13 @@ export default function CoursesPage() {
     const [courses, setCourses] = useState([
         "Data Analysis Using R",
         "Intermediate Python",
+        "Intermediate Python",
+        "Intermediate Python",
+        "Intermediate Python",
     ]);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const searchHandler = (e) => {
         setSearch(e.target.value);
@@ -62,8 +67,9 @@ export default function CoursesPage() {
             )}
             <header className="flex  w-5/6 m-auto place-items-center justify-between min-[280px]:flex-col-reverse lg:flex-row lg:my-10">
                 <div className="w-1/2 min-[280px]:w-5/6 lg:w-[400px]">
-                    <h1 className="font-bold text-3xl my-2 ">
-                        Learn on Your Schedule
+                    <h1 className="font-bold text-3xl my-2 mb-9 ">
+                        Learn on Your{" "}
+                        <span className="text-[#FF5E6E]">Sche</span>dule
                     </h1>
                     <p className="">
                         Study any topic, anytime explore thousands of courses{" "}
@@ -72,7 +78,7 @@ export default function CoursesPage() {
                     </p>
 
                     <input
-                        className="text-sm h-[35px] w-full pl-2 rounded-2xl shadow-xl mt-6"
+                        className="text-xs h-[35px] px-10 py-4 w-full bg-[#FFFCFC] rounded-2xl shadow-lg mt-6"
                         type="text"
                         value={search}
                         onChange={searchHandler}
@@ -81,7 +87,7 @@ export default function CoursesPage() {
 
                     <button
                         onClick={loadCourses}
-                        className="rounded-2xl pl-4 pr-4 mt-4 bg-rose-500 text-white hover:bg-rose-500"
+                        className="rounded-2xl px-12 py-[10px] mt-7 bg-[#FF5E6E] text-xs text-white hover:bg-rose-500"
                     >
                         Search
                     </button>
@@ -90,28 +96,29 @@ export default function CoursesPage() {
                 <img src="assets/coursesBg (1).png" alt="" />
             </header>
 
-            <div className="pt-6 pl-10 pb-10">
-                <h1 className="text-left ml-4 mb-8 font-bold">
+            <div className="">
+                <h1 className="text-left text-xl font-bold pt-6 pl-10 pb-6">
                     Courses Categories
                 </h1>
-                <div className="flex">
+                <div className="flex justify-evenly w-full">
                     {CategoriesTitles.map((element, id) => (
                         <Categoriescard title={element.title} key={id} />
                     ))}
                 </div>
-                <div className="flex">
-                    <h1 className="text-left ml-4 mt-6 mb-4 font-bold">
+                <div className="flex justify-between place-items-center w-[93%] m-auto">
+                    <h1 className="text-left text-xl py-6 font-bold">
                         Courses for you
                     </h1>
                     <img
-                        className="pt-4 ml-auto pr-8"
-                        src="assets/forwardArrow.png"
+                        className="w-[50px] h-[50px] cursor-pointer"
+                        src="assets/rightArrow.png"
                         alt=""
+                        onClick={() => navigate("/courses/all")}
                     />
                 </div>
             </div>
 
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-evenly pt-14 pb-32">
                 {courses.map((element, id) => (
                     <CoursesCard title={element} key={id} />
                 ))}
