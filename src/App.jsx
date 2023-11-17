@@ -12,6 +12,7 @@ import WelcomePage from "./pages/WelcomePage";
 import { useSelector } from "react-redux";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ProfilePage from "./pages/ProfilePage";
+import CoursesPage2 from "./pages/CoursesPage2";
 
 function App() {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -52,6 +53,11 @@ function App() {
                             exact
                             path="/welcome"
                             element={<WelcomePage />}
+                        />
+                        <Route
+                            exact
+                            path="/courses/all"
+                            element={<CoursesPage2 />}
                         />
                     </Route>
                 </Routes>
