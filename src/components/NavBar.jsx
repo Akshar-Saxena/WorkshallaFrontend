@@ -7,9 +7,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function NavBar() {
-    // const notify = () => {
-    //     toast.success("Successfully logged in");
-    // };
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -115,12 +112,12 @@ export default function NavBar() {
                                 My Profile
                             </li>
                         </Link>
-                        <button
+                        {/* <button
                             onClick={() => dispatch(logout())}
                             className="p-2 my-2 rounded-md bg-[#946cc3] text-white w-[90px]"
                         >
                             Log out
-                        </button>
+                        </button> */}
                     </ul>
                 )}
                 {isOpenMenu && !isAuthenticated && (
@@ -173,12 +170,12 @@ export default function NavBar() {
                             alt=""
                         />
                     </Link>
-                    <button
+                    {/* <button
                         onClick={logoutRedirect}
                         className="w-[100px] bg-[#946cc5] rounded-lg text-white mx-8 text-xs hover:bg-[#2d1b46]"
                     >
                         Log out
-                    </button>
+                    </button> */}
                 </div>
             ) : (
                 <div className="flex min-[425px]: w-[300px] min-[280px]:hidden md:flex md:justify-end xl:w-[400px] ">
