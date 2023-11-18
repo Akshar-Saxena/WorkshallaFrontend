@@ -71,8 +71,8 @@ export default function CoursesPage() {
                     />
                 </div>
             )}
-            <header className="flex  w-5/6 m-auto place-items-center justify-between min-[280px]:flex-col-reverse lg:flex-row lg:my-10">
-                <div className="w-1/2 min-[280px]:w-5/6 lg:w-[400px]">
+            <header className="flex  w-5/6 ml-28 place-items-center justify-between min-[280px]:flex-col-reverse lg:flex-row lg:my-10">
+                <div className="w-1/2  min-[280px]:w-5/6 lg:w-[400px]">
                     <h1 className="font-bold text-3xl my-2 mb-9 ">
                         Learn on Your{" "}
                         <span className="text-[#FF5E6E]">Sche</span>dule
@@ -97,16 +97,18 @@ export default function CoursesPage() {
                     >
                         Search
                     </button>
+                    
                 </div>
-
-                <img src="assets/coursesBg (1).png" alt="" />
+                <div className="min-[280px]:mr-4">
+                    <img className="pt-4 pb-4 ml-28 min-[280px]:ml-6" src="../src/assets/coursesImg.png" alt="" /> 
+                </div> 
             </header>
 
             <div className="">
                 <h1 className="text-left text-xl font-bold pt-6 pl-10 pb-6">
                     Courses Categories
                 </h1>
-                <div className="flex justify-evenly w-full flex-wrap">
+                <div className="flex justify-evenly w-full min-[280px]:flex-col min-[280px]:place-items-center md:flex-row">
                     {CategoriesTitles.map((element, id) => (
                         <Categoriescard
                             onClick={selectionHandler}

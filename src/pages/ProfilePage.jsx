@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "../components/NavBar";
+
 import { useDispatch } from "react-redux";
 import { logout } from "../auth/authReducer";
 import { useNavigate } from "react-router-dom";
