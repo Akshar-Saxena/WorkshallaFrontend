@@ -17,23 +17,19 @@ export default function CoursesPage() {
     const [courses, setCourses] = useState([
         "Data Analysis Using R",
         "Intermediate Python",
-        "Intermediate Python",
-        "Intermediate Python",
-        "Intermediate Python",
+        "App Marketing",
+        "Web Development",
+        "Data Algorithms",
     ]);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const searchHandler = (e) => {
-        setSearch(e.target.value);
-    };
-
-    const loadCourses = () => {
+    const loadCourses = (s = search.trim()) => {
         setLoading(true);
         let config = {
             method: "get",
-            url: `https://course-api-gb35.onrender.com/recommendation_func/${search.trim()}`,
+            url: `https://course-api-gb35.onrender.com/recommendation_func/${s}`,
             headers: {
                 "Access-Control-Allow-Origin": "http://localhost:5173",
                 "Access-Control-Allow-Methods": "GET",
@@ -44,6 +40,7 @@ export default function CoursesPage() {
         axios
             .request(config)
             .then((response) => {
+                // console.log(response.data);
                 setCourses(response.data);
                 setLoading(false);
             })
@@ -51,6 +48,15 @@ export default function CoursesPage() {
                 console.log(error);
                 setLoading(false);
             });
+    };
+
+    const selectionHandler = (e) => {
+        loadCourses(e.target.innerHTML);
+        window.scrollTo(0, 0);
+    };
+
+    const searchHandler = (e) => {
+        setSearch(e.target.value);
     };
 
     return (
@@ -100,9 +106,13 @@ export default function CoursesPage() {
                 <h1 className="text-left text-xl font-bold pt-6 pl-10 pb-6">
                     Courses Categories
                 </h1>
-                <div className="flex justify-evenly w-full">
+                <div className="flex justify-evenly w-full flex-wrap">
                     {CategoriesTitles.map((element, id) => (
-                        <Categoriescard title={element.title} key={id} />
+                        <Categoriescard
+                            onClick={selectionHandler}
+                            title={element.title}
+                            key={id}
+                        />
                     ))}
                 </div>
                 <div className="flex justify-between place-items-center w-[93%] m-auto">
@@ -113,14 +123,21 @@ export default function CoursesPage() {
                         className="w-[50px] h-[50px] cursor-pointer"
                         src="assets/rightArrow.png"
                         alt=""
-                        onClick={() => navigate("/courses/all")}
+                        onClick={() =>
+                            navigate("/courses/all", {
+                                state: {
+                                    course: courses,
+                                    link: "../../",
+                                },
+                            })
+                        }
                     />
                 </div>
             </div>
 
             <div className="flex flex-wrap justify-evenly pt-14 pb-32">
                 {courses.map((element, id) => (
-                    <CoursesCard title={element} key={id} />
+                    <CoursesCard link="./" title={element} key={id} />
                 ))}
             </div>
 

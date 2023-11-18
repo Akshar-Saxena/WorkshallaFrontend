@@ -6,8 +6,11 @@ import ServicesTitles from "../constants/ServicesTitles.json";
 import ChallengeCard from "../components/ChallengeCard";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function HomePageBeforeLogin() {
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
     const [desc, setDesc] = useState(
         "Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam cum eius odio dolorem natus, delectus ipsatempora eum est perferendis odit minus esse minimaconsequuntur amet! Veritatis eligendi eum libero?"
     );
@@ -69,7 +72,11 @@ export default function HomePageBeforeLogin() {
                             Read {button}
                         </button>
                         <button
-                            onClick={() => navigate("/login")}
+                            onClick={() =>
+                                isAuthenticated
+                                    ? navigate("/jobs")
+                                    : navigate("/login")
+                            }
                             className="py-2 text-[13px] px-4 rounded mx-7 my-3 font-medium outline outline-1 outline-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white hover:outline-white md:text-[8px] min-[280px]:text-[10px] min-[280px]:px-1 min-[280px]:mx-0 md:text-sm md:px-3"
                         >
                             Start Today
