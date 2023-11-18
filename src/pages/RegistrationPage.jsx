@@ -90,6 +90,10 @@ export default function RegistrationPage() {
             notifyError("Username must be at least 2 characters");
             return;
         }
+        if (!formData.name.match(/^[0-9a-zA-Z]$/)) {
+            notifyError("Username can only contain letters and numbers");
+            return;
+        }
         if (!formData.email.includes("@")) {
             notifyError("Not a valid email address");
             return;
