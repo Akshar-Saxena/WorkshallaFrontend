@@ -4,7 +4,7 @@ export default function Footer(props) {
     return (
         <div className="min-[280px]:flex min-[280px]:flex-col min-[280px]:justify-center">
             <div className="bg-[#946CC3] outline outline-1 outline-black flex justify-between place-items-center pb-12 min-[280px]:flex-col lg:flex-row lg:justify-evenly">
-                <div className="ml-10 mt-7 min-[280px]:m-0">
+                <div className="lg:ml-10 mt-7 min-[280px]:pt-10">
                     <h2 className="font-bold">Important Links</h2>
                     <div className="flex mt-5 min-[280px]:flex-col min-[425px]:flex-row">
                         <ul className="pr-6 min-[280px]:p-0  min-[425px]:px-2">
