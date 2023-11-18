@@ -2,8 +2,12 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import { useDispatch } from "react-redux";
 import { logout } from "../auth/authReducer";
+import { useNavigate } from "react-router-dom";
+
 export default function ProfilePage() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const profile = {
         name: document.cookie.split(";")[0].split("=")[1],
     };
@@ -29,7 +33,10 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="flex items-center min-[280px]:flex-col md:flex-row">
-                    <button className="bg-[#B092D3] text-white py-2 rounded-lg min-[280px]:w-[120px]">
+                    <button
+                        onClick={() => navigate("/profile/edit")}
+                        className="bg-[#B092D3] text-white py-2 rounded-lg min-[280px]:w-[120px]"
+                    >
                         Edit
                     </button>
                     <button className="bg-[#B092D3] text-white py-2 md:mx-4 md:m-0 rounded-lg min-[280px]:w-[120px] min-[280px]:mt-3">
