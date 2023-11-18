@@ -106,14 +106,14 @@ export const JobCard = (props) => {
                     <div className="w-full h-[540px] flex flex-col place-items-center bg-white shadow-[0_-10px_25px_-15px_rgba(0,0,0,0.3)] rounded-t-3xl sticky z-40 top-[500px]">
                         <img
                             onClick={viewDetails}
-                            className="w-[50px] mt-6"
+                            className="w-[50px] mt-6 cursor-pointer"
                             src="assets/downButton.png"
                             alt=""
                         />
                         <div className="flex justify-between w-[90%]">
                             <div className="flex w-fit">
                                 <img
-                                    className="w-[150px] mr-5"
+                                    className="w-[150px] mr-5 "
                                     src="assets/viewDetailsLogo.png"
                                     alt=""
                                 />
