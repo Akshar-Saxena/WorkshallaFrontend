@@ -7,6 +7,10 @@ export default function ResetPassword() {
     const [placeholder, newPlaceholder] = useState("Email");
     const [otpButton, setOtpButton] = useState("block");
     const [resetButton, setResetButton] = useState("none");
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
     const [emailToggleColors, setEmailToggleColors] = useState([
         "#946CC3",
         "white",
@@ -62,15 +66,51 @@ export default function ResetPassword() {
                     <label className="">New Password</label>
                     <input
                         className="text-xs h-[35px] w-full pl-3 rounded-md outline outline-1 outline-black mb-4"
-                        type="text"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Enter your New Password"
                     />
+                    <span
+                                onClick={togglePasswordVisibility}
+                                className="cursor-pointer absolute right-2"
+                            >
+                                {showPassword ? (
+                                    <img
+                                        src="assets/openEye.png"
+                                        className="animate-pulse w-[24px] mr-36 mt-2 "
+                                        alt="eye"
+                                    />
+                                ) : (
+                                    <img
+                                        src="assets/closeEye.png"
+                                        className="animate-pulse w-[24px] mr-36 mt-2 "
+                                        alt=""
+                                    />
+                                )}
+                            </span>
                     <label className="">Confirm Password</label>
                     <input
                         className="text-xs h-[35px] w-full pl-3 rounded-md outline outline-1 outline-black mb-4"
-                        type="text"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Re-write your New Password"
                     />
+                    <span
+                                onClick={togglePasswordVisibility}
+                                className="cursor-pointer absolute right-2"
+                            >
+                                {showPassword ? (
+                                    <img
+                                        src="assets/openEye.png"
+                                        className="animate-pulse w-[24px] mr-36 mt-2"
+                                        alt="eye"
+                                    />
+                                ) : (
+                                    <img
+                                        src="assets/closeEye.png"
+                                        className="animate-pulse w-[24px] mr-36 mt-2"
+                                        alt=""
+                                    />
+                                )}
+                            </span>
                     <div
                         onClick={togglerHandler}
                         className="outline outline-1 outline-[#946CC3] h-fit w-fit flex my-5 rounded-md cursor-pointer"
