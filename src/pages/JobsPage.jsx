@@ -63,7 +63,6 @@ export const JobsPage = () => {
             {/* Job Card holder ends*/}
 
             {isOpen && (
-                // <div className="absolute left-0 h-screen w-[100%] bg-green-300">
                 <div className="w-full h-[400px] flex flex-col place-items-center bg-gray-300 shadow-sm rounded-3xl sticky z-40 bottom-0">
                     <img
                         onClick={viewDetails}

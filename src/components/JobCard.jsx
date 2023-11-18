@@ -10,7 +10,7 @@ export const JobCard = (props) => {
     };
 
     const applyInternship = () => {
-        alert(`Applied for ${props.item.internship_name}`);
+        alert(`Applied for ${props.item.id}`);
     };
 
     useEffect(() => {
