@@ -7,7 +7,7 @@ import CompaniesPage from "./pages/CompaniesPage";
 import CoursesPage from "./pages/CoursesPage";
 import { JobsPage } from "./pages/JobsPage";
 import ResetPassword from "./pages/ResetPassword";
-
+import EditProfilePage from "./pages/EditProfilePage";
 import WelcomePage from "./pages/WelcomePage";
 import { useSelector } from "react-redux";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
@@ -61,6 +61,11 @@ function App() {
                             exact
                             path="/courses/all"
                             element={<CoursesPage2 />}
+                        />
+                        <Route
+                            exact
+                            path="/profile/edit"
+                            element={<EditProfilePage />}
                         />
                     </Route>
                 </Routes>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,6 +7,13 @@ import { useEffect } from "react";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
+    const [bgcolor1, setbgcolor1] = useState("white");
+    const [bgcolor2, setbgcolor2] = useState("white");
+    const [textcolor1, settextcolor1] = useState("black");
+    const [textcolor2, settextcolor2] = useState("black");
+    const workStatus = ["Not Available", "Available"];
+    let skills = [];
+
     let c = true;
     useEffect(() => {
         if (c) {
@@ -14,6 +21,38 @@ export default function WelcomePage() {
         }
         c = false;
     }, []);
+
+    const workHandler = () => {
+        setbgcolor1(bgcolor1 == "#94655C" ? "white" : "#94655C");
+        setbgcolor2(bgcolor1 == "white" ? "white" : "#94655C");
+        settextcolor1(textcolor1 == "black" ? "white" : "black");
+        settextcolor2(textcolor1 == "white" ? "white" : "black");
+    };
+
+    const skillsHandler = (value) => {
+        value.target.className = value.target.className.replace(
+            value.target.className.includes("#CAB7E180")
+                ? "#CAB7E180"
+                : "#7b49b880",
+            value.target.className.includes("#7b49b880")
+                ? "#CAB7E180"
+                : "#7b49b880"
+        );
+        if (skills.includes(value.target.innerHTML)) {
+            skills = skills.filter((skill) => skill !== value.target.innerHTML);
+        } else {
+            skills.push(value.target.innerHTML);
+        }
+    };
+
+    const submitHandler = () => {
+        if (bgcolor1 == "white") {
+            console.log(workStatus[1]);
+        } else {
+            console.log(workStatus[0]);
+        }
+        console.log(skills);
+    };
 
     return (
         <>
@@ -38,8 +77,17 @@ export default function WelcomePage() {
                     <h3 className="mt-8 ml-6 text-lg font-semibold min-[280px]:m-0 min-[280px]:w-[200px] min-[280px]:mt-4">
                         Work Status
                     </h3>
-                    <div className="flex flex-wrap ml-6 mt-8 justify-evenly min-[280px]:m-0">
-                        <div className="outline outline-1 outline-black w-fit pl-5 pt-4 pb-4 pr-20 rounded-xl min-[280px]:p-7 min-[280px]:w-[160px]">
+                    <div
+                        onClick={workHandler}
+                        className="flex flex-wrap ml-6 mt-8 justify-evenly min-[280px]:m-0"
+                    >
+                        <div
+                            className={`outline outline-1 outline-black w-fit pl-5 pt-4 pb-4 pr-20 rounded-xl min-[280px]:p-7 min-[280px]:w-[160px] lg:w-[200px] flex flex-col justify-center place-items-center cursor-pointer`}
+                            style={{
+                                backgroundColor: `${bgcolor1}`,
+                                color: `${textcolor1}`,
+                            }}
+                        >
                             <h3 className="text-xl font-semibold min-[280px]:text-base">
                                 I'm Experienced
                             </h3>
@@ -49,7 +97,14 @@ export default function WelcomePage() {
                             </p>
                         </div>
 
-                        <div className="outline outline-1 outline-black w-fit ml-16 pl-5 pt-4 pb-4 pr-16 rounded-lg min-[280px]:mt-2 md:pt-2 min-[280px]:m-0 md:ml-8 min-[280px]:p-7 min-[280px]:w-[160px]">
+                        <div
+                            onClick={workHandler}
+                            className={`outline outline-1 outline-black w-fit ml-16 pl-5 pt-4 pb-4 pr-16 rounded-lg min-[280px]:mt-2 md:pt-2 min-[280px]:m-0 md:ml-8 min-[280px]:p-7 min-[280px]:w-[160px] lg:w-[200px] flex flex-col justify-center place-items-center cursor-pointer`}
+                            style={{
+                                backgroundColor: `${bgcolor2}`,
+                                color: `${textcolor2}`,
+                            }}
+                        >
                             <h3 className="text-xl font-semibold">
                                 I'm Fresher
                             </h3>
@@ -64,41 +119,69 @@ export default function WelcomePage() {
                     </h3>
                     <div className="flex min-[280px]:flex-col md:flex-row">
                         <ul className="flex-col">
-                            <li className="flex text-black bg-[#CAB7E180] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg min-[280px]:pl-8 ">
+                            <li
+                                onClick={skillsHandler}
+                                className="flex text-black bg-[#CAB7E180] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg cursor-pointer min-[280px]:pl-8 "
+                            >
                                 Blockchain
                             </li>
-                            <li className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg mt-4">
+                            <li
+                                onClick={skillsHandler}
+                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                            >
                                 Design
                             </li>
-                            <li className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg mt-4">
+                            <li
+                                onClick={skillsHandler}
+                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                            >
                                 Marketing
                             </li>
                         </ul>
                         <ul className="flex-col ml-8 min-[280px]:mt-4 min-[280px]:ml-1 md:mt-0">
-                            <li className="flex text-black bg-[#CAB7E180] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg min-[280px]:pl-8">
+                            <li
+                                onClick={skillsHandler}
+                                className="flex text-black bg-[#CAB7E180] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg cursor-pointer min-[280px]:pl-8"
+                            >
                                 Architecture
                             </li>
-                            <li className="flex text-black bg-[#CAB7E180] w-fit  pl-8 pr-8 pt-1 pb-1 rounded-lg mt-4">
+                            <li
+                                onClick={skillsHandler}
+                                className="flex text-black bg-[#CAB7E180] w-fit  pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                            >
                                 IT and Software
                             </li>
-                            <li className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg mt-4">
+                            <li
+                                onClick={skillsHandler}
+                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                            >
                                 Writing
                             </li>
                         </ul>
                         <ul className="flex-col ml-8 min-[280px]:mt-4 min-[280px]:ml-1 md:mt-0">
-                            <li className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-16 pt-1 pb-1 rounded-lg">
+                            <li
+                                onClick={skillsHandler}
+                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-16 pt-1 pb-1 rounded-lg cursor-pointer"
+                            >
                                 Javascript
                             </li>
-                            <li className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg mt-4">
+                            <li
+                                onClick={skillsHandler}
+                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                            >
                                 Database
                             </li>
-                            <li className="flex text-black bg-[#CAB7E180] w-fit mt-4 pl-5 pr-6 pt-1 pb-1 rounded-lg min-[280px]:pl-8">
+                            <li
+                                onClick={skillsHandler}
+                                className="flex text-black bg-[#CAB7E180] w-fit mt-4 pl-5 pr-6 pt-1 pb-1 rounded-lg cursor-pointer min-[280px]:pl-8"
+                            >
                                 Web development
                             </li>
                         </ul>
                     </div>
                     <button
-                        onClick={() => navigate("/")}
+                        // onClick={() => navigate("/")}
+                        onClick={submitHandler}
                         className=" text-black bg-white outline outline-purple-600 outline-1 w-fit pl-16 pr-20 rounded-md mt-8 font-semibold hover:bg-purple-900 hover:text-white"
                     >
                         Submit
