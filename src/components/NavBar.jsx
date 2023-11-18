@@ -152,7 +152,10 @@ export default function NavBar(props) {
 
             {isAuthenticated ? (
                 <div className="flex  min-[280px]:hidden  min-[768px]:flex">
-                    <button className="w-[120px] py-1 outline outline-1 outline-[#946cc5] rounded-lg font-medium hover:bg-[#946cc5] hover:text-white mx-8 text-xs">
+                    <button
+                        onClick={() => navigate("/applications")}
+                        className="w-[120px] py-1 outline outline-1 outline-[#946cc5] rounded-lg font-medium hover:bg-[#946cc5] hover:text-white mx-8 text-xs"
+                    >
                         Your Task
                     </button>
                     <Link to="/profile">
