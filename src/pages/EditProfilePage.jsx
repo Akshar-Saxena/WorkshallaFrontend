@@ -30,8 +30,8 @@ export default function EditProfilePage() {
     return (
         <>
             <NavBar link="../../" />
-            <div className="flex flex-wrap w-full justify-evenly mt-10">
-                <div className="flex flex-col w-[30%] ">
+            <div className="flex w-full md:justify-evenly mt-10 min-[280px]:flex-col min-[280px]:place-items-center md:place-items-start md:flex-row">
+                <div className="flex flex-col md:w-[30%] min-[280px]:w-[85%]">
                     <h1 className="font-bold text-3xl mb-4 text-[#9465cc]">
                         Edit Profile
                     </h1>
@@ -81,7 +81,7 @@ export default function EditProfilePage() {
                         Save
                     </button>
                 </div>
-                <div className="w-[30%] outline outline-1 outline-black rounded-2xl shadow-2xl">
+                <div className="md:w-[30%] min-[280px]:w-[85%] min-[280px]:my-10 outline outline-1 outline-black rounded-2xl shadow-2xl">
                     <h2 className="my-6 ml-6">
                         <span className="font-semibold text-[#9465CC]">
                             Name :

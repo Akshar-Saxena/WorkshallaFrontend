@@ -35,11 +35,11 @@ export default function ProfilePage() {
                 <div className="flex items-center min-[280px]:flex-col md:flex-row">
                     <button
                         onClick={() => navigate("/profile/edit")}
-                        className="bg-[#B092D3] text-white py-2 rounded-lg min-[280px]:w-[120px]"
+                        className="bg-[#9465CC] hover:bg-[#532c84] text-white py-2 rounded-lg min-[280px]:w-[120px] min-[280px]:mt-3 md:m-0"
                     >
                         Edit
                     </button>
-                    <button className="bg-[#B092D3] text-white py-2 md:mx-4 md:m-0 rounded-lg min-[280px]:w-[120px] min-[280px]:mt-3">
+                    <button className="bg-[#9465CC] hover:bg-[#532c84] text-white py-2 md:mx-4 md:m-0 rounded-lg min-[280px]:w-[120px] min-[280px]:m-3">
                         Your Resume
                     </button>
                 </div>

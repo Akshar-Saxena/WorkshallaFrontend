@@ -75,7 +75,7 @@ export const JobCard = (props) => {
                             src="assets/salary.png"
                             alt=""
                         />
-                        225-5,000/week
+                        Rs. {props.item.stipend}/month
                     </li>
                 </ul>
             </div>
@@ -103,22 +103,22 @@ export const JobCard = (props) => {
                     className="absolute left-0 h-screen w-[100%] bg-transparent"
                     style={{ top: `${scrollY}px` }}
                 >
-                    <div className="w-full h-[540px] flex flex-col place-items-center bg-white shadow-[0_-10px_25px_-15px_rgba(0,0,0,0.3)] rounded-t-3xl sticky z-40 top-[500px]">
+                    <div className="w-full md:h-[540px] min-[280px]:h-[600px] flex flex-col place-items-center bg-white shadow-[0_-10px_25px_-15px_rgba(0,0,0,0.3)] rounded-t-3xl sticky z-40 top-[500px]">
                         <img
                             onClick={viewDetails}
                             className="w-[50px] mt-6 cursor-pointer"
                             src="assets/downButton.png"
                             alt=""
                         />
-                        <div className="flex justify-between w-[90%]">
+                        <div className="flex justify-between w-[90%] min-[280px]:flex-col min-[470px]:flex-row">
                             <div className="flex w-fit">
                                 <img
-                                    className="w-[150px] mr-5 "
+                                    className="w-[150px] mr-5 min-[280px]:hidden sm:block"
                                     src="assets/viewDetailsLogo.png"
                                     alt=""
                                 />
                                 <div>
-                                    <h1 className="font-bold text-3xl">
+                                    <h1 className="font-bold min-[470px]:text-3xl min-[280px]:text-2xl">
                                         {props.item.internship_name}
                                     </h1>
                                     <h2 className="text-gray-600 text-xs">
@@ -134,12 +134,12 @@ export const JobCard = (props) => {
                                     <h2 className="text-gray-600 text-xs">
                                         Email : {props.item.contact_email}
                                     </h2>
-                                    <h1 className="mt-4 font-semibold text-lg">
+                                    <h1 className="mt-4 font-semibold min-[470px]:text-lg min-[280px]:text-base">
                                         {props.item.job_title}
                                     </h1>
                                 </div>
                             </div>
-                            <div>
+                            <div className="min-[280px]:mt-3 min-[280px]:text-xs min-[470px]:m-0 min-[470px]:text-lg">
                                 <button
                                     onClick={applyInternship}
                                     className="outline outline-1 outline-black font-semibold px-3 py-2 mx-3 rounded-lg"
@@ -152,16 +152,20 @@ export const JobCard = (props) => {
                             </div>
                         </div>
                         <div className="w-[90%] mt-5">
-                            <h1 className="font-bold text-lg">Skills</h1>
-                            <p className="bg-[#946CC333] px-4 p-2 rounded-lg">
+                            <h1 className="font-bold min-[470px]:text-2xl min-[280px]:text-base">
+                                Skills
+                            </h1>
+                            <p className="bg-[#946CC333] px-4 p-2 rounded-lg min-[280px]:text-xs min-[470px]:text-base">
                                 {props.item.requirements}
                             </p>
                         </div>
                         <div className="w-[90%] mt-5">
-                            <h1 className="font-bold text-2xl">
+                            <h1 className="font-bold min-[470px]:text-2xl min-[280px]:text-base">
                                 About the Job
                             </h1>
-                            <p>{props.item.description}</p>
+                            <p className="min-[280px]:text-xs min-[470px]:text-base">
+                                {props.item.description}
+                            </p>
                         </div>
                         <div className="w-[90%] mt-5">
                             <h1 className="font-bold text-lg">Stipend</h1>
