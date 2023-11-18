@@ -1,16 +1,54 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const JobCard = (props) => {
     const [view, setView] = useState(false);
     const [scrollY, setScrollY] = useState(2000);
+    const user = document.cookie.split(";")[0].split("=")[1];
 
     const viewDetails = () => {
         setView(!view);
     };
 
+    const notify = () => {
+        toast.success(`Successfully Applied to ${props.item.internship_name}`);
+    };
+
+    const notifyError = () => {
+        toast.error("Error applying to ${props.item.internship_name");
+    };
+
+    const options = {
+        method: "POST",
+        url: "https://workshala-api.onrender.com/intern/applications/",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: {
+            fullname: user,
+            Graduation_name: "string",
+            year_of_study: 2147483647,
+            cover_letter: "string",
+            skills: "string",
+            username: 1,
+            intern_id: props.item.id,
+        },
+    };
+
     const applyInternship = () => {
-        alert(`Applied for ${props.item.id}`);
+        axios
+            .request(options)
+            .then(function (response) {
+                console.log(response.data);
+                notify();
+            })
+            .catch(function (error) {
+                console.log(error);
+                notifyError();
+            });
     };
 
     useEffect(() => {
@@ -104,6 +142,7 @@ export const JobCard = (props) => {
                     style={{ top: `${scrollY}px` }}
                 >
                     <div className="w-full md:h-[540px] min-[280px]:h-[600px] flex flex-col place-items-center bg-white shadow-[0_-10px_25px_-15px_rgba(0,0,0,0.3)] rounded-t-3xl sticky z-40 top-[500px]">
+                        <ToastContainer />
                         <img
                             onClick={viewDetails}
                             className="w-[50px] mt-6 cursor-pointer"

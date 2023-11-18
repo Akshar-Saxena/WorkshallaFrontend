@@ -71,7 +71,7 @@ const LoginPage = () => {
                 // console.log(response.data);
                 setLoading(false);
                 notify();
-                userLoggedIn(response.data.email);
+                userLoggedIn(response.data.username);
             })
             .catch(function (error) {
                 notifyError("Invalid Username or Password");

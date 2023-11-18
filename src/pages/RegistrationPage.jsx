@@ -176,6 +176,7 @@ export default function RegistrationPage() {
                 } catch (e) {
                     console.log(e);
                     notifyError("Error! Try again");
+                    setLoading(false);
                 }
             });
     };
