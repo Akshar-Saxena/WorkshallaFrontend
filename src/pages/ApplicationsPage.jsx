@@ -23,7 +23,7 @@ export default function ApplicationsPage() {
     const getInternships = async (id, appli_id) => {
         try {
             const response = await axios.get(
-                `https://workshala-api.onrender.com/intern/internships/${id}/`
+                `https://workshala-api.onrender.com/intern/internships/${appli_id}/`
             );
             setInternships((prev) => [
                 ...prev,
