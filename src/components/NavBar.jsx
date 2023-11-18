@@ -1,31 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../auth/authReducer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function NavBar() {
+export default function NavBar(props) {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-    const clearCookie = (cookieName) => {
-        document.cookie =
-            cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
-    };
-    const logoutRedirect = () => {
-        clearCookie("user");
-        dispatch(logout());
-    };
-
-    // useEffect(() => {
-    //     if (isAuthenticated && flag2) {
-    //         notify();
-    //         flag2 = false;
-    //     }
-    // }, []);
+    // const clearCookie = (cookieName) => {
+    //     document.cookie =
+    //         cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+    // };
+    // const logoutRedirect = () => {
+    //     clearCookie("user");
+    //     dispatch(logout());
+    // };
 
     const toggleHandler = () => {
         setIsOpenMenu(!isOpenMenu);
@@ -51,7 +43,7 @@ export default function NavBar() {
                         onClick={toggleHandler}
                     >
                         <img
-                            src="assets/menu.png"
+                            src={`${props.link}assets/menu.png`}
                             alt=""
                             className="w-[20px]"
                         />
@@ -166,7 +158,7 @@ export default function NavBar() {
                     <Link to="/profile">
                         <img
                             className="w-[40px] cursor-pointer"
-                            src="assets/profile.png"
+                            src={`${props.link}assets/profile.png`}
                             alt=""
                         />
                     </Link>
@@ -197,3 +189,7 @@ export default function NavBar() {
         </div>
     );
 }
+
+NavBar.defaultProps = {
+    link: "./",
+};
