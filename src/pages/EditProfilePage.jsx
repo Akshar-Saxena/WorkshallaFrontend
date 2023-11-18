@@ -24,7 +24,7 @@ export default function EditProfilePage() {
 
     const editHandler = () => {
         null;
-        navigate("/profile");
+        navigate("/profile", { state: { data: formData } });
     };
 
     return (

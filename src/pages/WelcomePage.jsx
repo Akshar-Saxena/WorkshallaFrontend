@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [bgcolor1, setbgcolor1] = useState("white");
     const [bgcolor2, setbgcolor2] = useState("white");
     const [textcolor1, settextcolor1] = useState("black");
@@ -31,12 +34,8 @@ export default function WelcomePage() {
 
     const skillsHandler = (value) => {
         value.target.className = value.target.className.replace(
-            value.target.className.includes("#CAB7E180")
-                ? "#CAB7E180"
-                : "#7b49b880",
-            value.target.className.includes("#7b49b880")
-                ? "#CAB7E180"
-                : "#7b49b880"
+            value.target.className.includes("#d1c2e4") ? "#d1c2e4" : "#ac6dff",
+            value.target.className.includes("#ac6dff") ? "#d1c2e4" : "#ac6dff"
         );
         if (skills.includes(value.target.innerHTML)) {
             skills = skills.filter((skill) => skill !== value.target.innerHTML);
@@ -46,12 +45,36 @@ export default function WelcomePage() {
     };
 
     const submitHandler = () => {
-        if (bgcolor1 == "white") {
-            console.log(workStatus[1]);
-        } else {
-            console.log(workStatus[0]);
-        }
-        console.log(skills);
+        const updateOptions = {
+            method: "PUT",
+            url: `https://workshala-api.onrender.com/auth/profiles/${
+                document.cookie.split(";")[0].split("=")[1]
+            }/`,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: {
+                fullname: `${document.cookie.split(";")[0].split("=")[1]}`,
+                bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora doloribus at atque officia facilis similique sint soluta voluptatibus eveniet, harum dolores enim magni minus eos corrupti. Voluptatum vel et ea nemo asperiores quisquam quam voluptate, distinctio, adipisci animi molestiae tempore iste est quis. Reprehenderit enim harum dolorem doloribus. Atque sapiente repellendus soluta repellat eum ex reprehenderit commodi libero provident. Cum temporibus at consequuntur voluptatem soluta sapiente sed, possimus optio explicabo, sint asperiores eveniet quas quae alias harum repellat ipsam unde!",
+                phone_number: "8810321161",
+                address: "string",
+                skills: `${skills}`,
+                experience: "string",
+                user: location.state.user_id,
+            },
+        };
+
+        axios
+            .request(updateOptions)
+            .then(function (response) {
+                console.log(response.data);
+                console.log("Updated");
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+
+        navigate("/");
     };
 
     return (
@@ -121,19 +144,19 @@ export default function WelcomePage() {
                         <ul className="flex-col">
                             <li
                                 onClick={skillsHandler}
-                                className="flex text-black bg-[#CAB7E180] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg cursor-pointer min-[280px]:pl-8 "
+                                className="flex text-black bg-[#d1c2e4] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg cursor-pointer min-[280px]:pl-8 "
                             >
                                 Blockchain
                             </li>
                             <li
                                 onClick={skillsHandler}
-                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                                className="flex text-black bg-[#d1c2e4] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
                             >
                                 Design
                             </li>
                             <li
                                 onClick={skillsHandler}
-                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                                className="flex text-black bg-[#d1c2e4] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
                             >
                                 Marketing
                             </li>
@@ -141,19 +164,19 @@ export default function WelcomePage() {
                         <ul className="flex-col ml-8 min-[280px]:mt-4 min-[280px]:ml-1 md:mt-0">
                             <li
                                 onClick={skillsHandler}
-                                className="flex text-black bg-[#CAB7E180] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg cursor-pointer min-[280px]:pl-8"
+                                className="flex text-black bg-[#d1c2e4] w-fit pl-16 pr-16 pt-1 pb-1 rounded-lg cursor-pointer min-[280px]:pl-8"
                             >
                                 Architecture
                             </li>
                             <li
                                 onClick={skillsHandler}
-                                className="flex text-black bg-[#CAB7E180] w-fit  pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                                className="flex text-black bg-[#d1c2e4] w-fit  pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
                             >
                                 IT and Software
                             </li>
                             <li
                                 onClick={skillsHandler}
-                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                                className="flex text-black bg-[#d1c2e4] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
                             >
                                 Writing
                             </li>
@@ -161,19 +184,19 @@ export default function WelcomePage() {
                         <ul className="flex-col ml-8 min-[280px]:mt-4 min-[280px]:ml-1 md:mt-0">
                             <li
                                 onClick={skillsHandler}
-                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-16 pt-1 pb-1 rounded-lg cursor-pointer"
+                                className="flex text-black bg-[#d1c2e4] w-fit pl-8 pr-16 pt-1 pb-1 rounded-lg cursor-pointer"
                             >
                                 Javascript
                             </li>
                             <li
                                 onClick={skillsHandler}
-                                className="flex text-black bg-[#CAB7E180] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
+                                className="flex text-black bg-[#d1c2e4] w-fit pl-8 pr-8 pt-1 pb-1 rounded-lg cursor-pointer mt-4"
                             >
                                 Database
                             </li>
                             <li
                                 onClick={skillsHandler}
-                                className="flex text-black bg-[#CAB7E180] w-fit mt-4 pl-5 pr-6 pt-1 pb-1 rounded-lg cursor-pointer min-[280px]:pl-8"
+                                className="flex text-black bg-[#d1c2e4] w-fit mt-4 pl-5 pr-6 pt-1 pb-1 rounded-lg cursor-pointer min-[280px]:pl-8"
                             >
                                 Web development
                             </li>
