@@ -15,6 +15,10 @@ export default function RegistrationPage() {
     // let allProfiles;
     // let userIds = [];
     const [uniqueId, setUniqueId] = useState(0);
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const notify = () => {
         toast.success("Registration Success");
@@ -199,11 +203,29 @@ export default function RegistrationPage() {
                     <label htmlFor="password">Password</label>
                     <input
                         className="text-xs h-[35px] w-full pl-3 rounded-md outline outline-1 outline-black"
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         id="password"
                         onChange={formDataHandler}
                         placeholder="Enter your password"
                     />
+                    <span
+                                onClick={togglePasswordVisibility}
+                                className="cursor-pointer absolute right-2"
+                            >
+                                {showPassword ? (
+                                    <img
+                                        src="assets/openEye.png"
+                                        className="animate-pulse w-[24px] mr-28 mt-8"
+                                        alt="eye"
+                                    />
+                                ) : (
+                                    <img
+                                        src="assets/closeEye.png"
+                                        className="animate-pulse w-[24px] mr-28 mt-8"
+                                        alt=""
+                                    />
+                                )}
+                            </span>
                 </div>
                 <button
                     onClick={submitHandler}
