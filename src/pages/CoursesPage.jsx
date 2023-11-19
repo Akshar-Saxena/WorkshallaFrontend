@@ -100,7 +100,7 @@ export default function CoursesPage() {
                     
                 </div>
                 <div className="min-[280px]:mr-4">
-                    <img className="pt-4 pb-4 ml-28 min-[280px]:ml-6" src="../src/assets/coursesImg.png" alt="" /> 
+                    <img className="pt-4 pb-4 ml-28 min-[280px]:ml-6" src="assets/coursesImg.png" alt="" /> 
                 </div> 
             </header>
 
