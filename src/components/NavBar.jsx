@@ -10,14 +10,6 @@ export default function NavBar(props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-    // const clearCookie = (cookieName) => {
-    //     document.cookie =
-    //         cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
-    // };
-    // const logoutRedirect = () => {
-    //     clearCookie("user");
-    //     dispatch(logout());
-    // };
 
     const toggleHandler = () => {
         setIsOpenMenu(!isOpenMenu);
@@ -94,7 +86,7 @@ export default function NavBar(props) {
                                 Jobs
                             </li>
                         </Link>
-                        <Link to="/">
+                        <Link to="/applications">
                             <li className="p-2 my-2 rounded-md bg-[#946cc3] text-white w-[100%]">
                                 Your Task
                             </li>
@@ -151,14 +143,16 @@ export default function NavBar(props) {
             {/* Left Div ends */}
 
             {isAuthenticated ? (
-                <div className="flex  min-[280px]:hidden  min-[768px]:flex">
-                    <button
-                        onClick={() => navigate("/applications")}
-                        className="w-[120px] py-1 outline outline-1 outline-[#946cc5] rounded-lg font-medium hover:bg-[#946cc5] hover:text-white mx-8 text-xs"
-                    >
-                        Your Task
-                    </button>
-                    <Link to="/profile">
+                <div className="flex justify-center place-items-center  min-[280px]:hidden  min-[768px]:flex">
+                    <Link to="/applications">
+                        <button
+                            // onClick={() => navigate("/applications")}
+                            className="w-[120px] h-[30px] py-1 outline outline-1 outline-[#946cc5] rounded-lg font-medium hover:bg-[#946cc5] hover:text-white mx-8 text-xs"
+                        >
+                            Your Task
+                        </button>
+                    </Link>
+                    <Link to="/profile" className="w-[90px]">
                         <img
                             className="w-[40px] cursor-pointer"
                             src={`${props.link}assets/profile.png`}

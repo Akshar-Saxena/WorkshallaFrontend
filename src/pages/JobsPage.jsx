@@ -10,6 +10,7 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 export const JobsPage = () => {
     const [internships, setInternships] = useState(["Fund"]);
     const [isOpen, setIsOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const getDataJobCard = async () => {
         setLoading(true);
@@ -27,8 +28,6 @@ export const JobsPage = () => {
     const viewDetails = () => {
         setIsOpen(!isOpen);
     };
-
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);

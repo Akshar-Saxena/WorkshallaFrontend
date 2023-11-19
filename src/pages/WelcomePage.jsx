@@ -6,9 +6,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { logout } from "../auth/authReducer";
 
 export default function WelcomePage() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const location = useLocation();
     const [bgcolor1, setbgcolor1] = useState("white");
     const [bgcolor2, setbgcolor2] = useState("white");
@@ -68,13 +71,12 @@ export default function WelcomePage() {
             .request(updateOptions)
             .then(function (response) {
                 console.log(response.data);
-                console.log("Updated");
             })
             .catch(function (err) {
                 console.log(err);
             });
-
-        navigate("/");
+        dispatch(logout());
+        navigate("/login");
     };
 
     return (

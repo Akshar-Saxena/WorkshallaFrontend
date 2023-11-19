@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import NavBar from "../components/NavBar";
@@ -7,11 +7,13 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 export default function ApplicationsPage() {
     let allApplications;
-    const [internships, setInternships] = React.useState([]);
+    const [internships, setInternships] = useState([]);
     const user = document.cookie.split(";")[0].split("=")[1];
+    const [loading, setLoading] = useState(false);
 
     const notify = () => {
         toast.success("Deleted Application Successfully");
@@ -21,6 +23,7 @@ export default function ApplicationsPage() {
     };
 
     const getInternships = async (id, appli_id) => {
+        setLoading(true);
         try {
             const response = await axios.get(
                 `https://workshala-api.onrender.com/intern/internships/${id}/`
@@ -29,12 +32,15 @@ export default function ApplicationsPage() {
                 ...prev,
                 { apli_id: appli_id, ...response.data },
             ]);
+            setLoading(false);
         } catch (err) {
             console.log(err);
+            setLoading(false);
         }
     };
 
     const getApplications = async () => {
+        setLoading(true);
         try {
             const response = await axios.get(
                 "https://workshala-api.onrender.com/intern/applications/"
@@ -42,11 +48,14 @@ export default function ApplicationsPage() {
             allApplications = response.data;
             allApplications.forEach((element) => {
                 if (element.fullname == user) {
+                    setLoading(false);
                     getInternships(element.intern_id, element.id);
                 }
             });
+            setLoading(false);
         } catch (error) {
             console.log(error);
+            setLoading(false);
         }
     };
     const showConfirmation = (e) => {
@@ -77,6 +86,7 @@ export default function ApplicationsPage() {
                 `https://workshala-api.onrender.com/intern/applications/${e}`
             );
             notify();
+            setLoading(false);
             setInternships([]);
             getApplications();
         } catch (err) {
@@ -84,12 +94,23 @@ export default function ApplicationsPage() {
         }
     };
 
-    useEffect(() => getApplications, []);
+    useEffect(() => {
+        getApplications();
+    }, []);
 
     return (
         <>
             <NavBar />
             <ToastContainer />
+            {loading && (
+                <div className="w-full h-[100vh] bg-white flex justify-center place-items-center opacity-75 absolute top-0 z-40">
+                    <PropagateLoader
+                        color={"#946cc3"}
+                        loading={loading}
+                        size={25}
+                    />
+                </div>
+            )}
             <div className="mt-10 m-auto w-[90%] justify-center flex flex-col place-items-center">
                 <h1 className="font-bold min-[280px]:text-xl  min-[425px]:text-3xl mb-8">
                     Your Applications
