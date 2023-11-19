@@ -56,7 +56,11 @@ export default function Footer(props) {
                         E-mail your Query
                     </h2>
                     <div className="min-[280px]:flex min-[280px]:justify-center">
-                        <input type="text" className="bg-[#DEC1FF]" />
+                        <input
+                            id="query"
+                            type="text"
+                            className="bg-[#DEC1FF]"
+                        />
                         <button className="bg-[#FF5E6E1A] text-white text-sm font-light py-[6px] px-5 rounded-lg">
                             Sign up
                         </button>
