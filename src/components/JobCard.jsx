@@ -42,7 +42,6 @@ export const JobCard = (props) => {
         axios
             .request(options)
             .then(function (response) {
-                console.log(response.data);
                 notify();
             })
             .catch(function (error) {

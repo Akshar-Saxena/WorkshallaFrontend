@@ -40,7 +40,6 @@ export default function ApplicationsPage() {
     };
 
     const getApplications = async () => {
-        console.log("Calling Function");
         setLoading(true);
         try {
             const response = await axios.get(

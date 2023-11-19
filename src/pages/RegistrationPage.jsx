@@ -114,6 +114,10 @@ export default function RegistrationPage() {
             notifyError("Invalid Phone Number");
             return;
         }
+        if (formData.phoneNumber.length < 10) {
+            notifyError("Invalid Phone Number");
+            return;
+        }
         setLoading(true);
         axios
             .request(options)
@@ -121,7 +125,7 @@ export default function RegistrationPage() {
                 console.log(response.data);
                 setLoading(false);
                 notify();
-                document.cookie = `user=${formData.name};`;
+                // document.cookie = `user=${formData.name};`;
                 userLoggedIn(response.data.id);
             })
             .catch(function (error) {
@@ -209,23 +213,23 @@ export default function RegistrationPage() {
                         placeholder="Enter your password"
                     />
                     <span
-                                onClick={togglePasswordVisibility}
-                                className="cursor-pointer absolute right-2"
-                            >
-                                {showPassword ? (
-                                    <img
-                                        src="assets/openEye.png"
-                                        className="animate-pulse w-[24px] mr-28 mt-8"
-                                        alt="eye"
-                                    />
-                                ) : (
-                                    <img
-                                        src="assets/closeEye.png"
-                                        className="animate-pulse w-[24px] mr-28 mt-8"
-                                        alt=""
-                                    />
-                                )}
-                            </span>
+                        onClick={togglePasswordVisibility}
+                        className="cursor-pointer absolute right-2"
+                    >
+                        {showPassword ? (
+                            <img
+                                src="assets/openEye.png"
+                                className="animate-pulse w-[24px] mr-28 mt-8"
+                                alt="eye"
+                            />
+                        ) : (
+                            <img
+                                src="assets/closeEye.png"
+                                className="animate-pulse w-[24px] mr-28 mt-8"
+                                alt=""
+                            />
+                        )}
+                    </span>
                 </div>
                 <button
                     onClick={submitHandler}
