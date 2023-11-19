@@ -94,7 +94,9 @@ export default function ApplicationsPage() {
         }
     };
 
-    useEffect(() => getApplications, []);
+    useEffect(() => {
+        getApplications();
+    }, []);
 
     return (
         <>
