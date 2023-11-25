@@ -1,114 +1,156 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import CompaniesCard2 from "../components/CompaniesCard2";
 import Footer from "../components/Footer";
+import axios from "axios";
+import PropagateLoader from "react-spinners/PropagateLoader";
+
 export default function CompaniesPage() {
-    const Dropdown = ({ options, selectedOption, onSelect, label }) => {
-        const [isOpen, setIsOpen] = useState(false);
+    const [internship, setInternship] = useState([]);
+    const [tempInternship, setTempInternship] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [locations, setLocations] = useState([]);
+    const [industries, setIndustries] = useState(["Industries"]);
+    const [companyTypes, setCompanyTypes] = useState(["Company Types"]);
 
-        const handleToggle = () => {
-            setIsOpen(!isOpen);
-        };
-
-        const handleSelect = (option) => {
-            onSelect(option);
-            setIsOpen(false);
-        };
-
-        return (
-            <div className="w-[25%]">
-                <div
-                    className="shadow-lg flex justify-between pl-8 pr-8 pt-2 pb-2 rounded-lg"
-                    onClick={handleToggle}
-                >
-                    {selectedOption || label}
-
-                    <span className="cursor-pointer">&#9660;</span>
-                </div>
-
-                {isOpen && (
-                    <div className="ml-8 cursor-pointer font-medium">
-                        {options.map((option) => (
-                            <div
-                                key={option}
-                                onClick={() => handleSelect(option)}
-                            >
-                                {option}
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
-        );
+    const getData = async () => {
+        setLoading(true);
+        const tempLocation = [];
+        try {
+            const response = await axios.get(
+                `https://workshala-api.onrender.com/auth/profiles/${
+                    document.cookie.split(";")[0].split("=")[1]
+                }/`
+            );
+            const internships = await axios.get(
+                `https://internship-api-ljib.onrender.com/internship/${response.data.skills}`
+            );
+            setInternship(internships.data);
+            setTempInternship(internships.data);
+            internships.data.forEach((element) => {
+                if (!tempLocation.includes(element.Location)) {
+                    tempLocation.push(element.Location);
+                    setLocations(tempLocation);
+                }
+            });
+            setLoading(false);
+        } catch (e) {
+            console.log(e);
+            setLoading(false);
+        }
     };
-    const locations = [
-        "Select location",
-        "Location 1",
-        "Location 2",
-        "Location 3",
-        "Location 4",
-    ];
-    const industries = [
-        "Select Industry",
-        "Industry 1",
-        "Industry 2",
-        "Industry 3",
-        "Industry 4",
-    ];
-    const companyTypes = [
-        "Select Company type",
-        "Type 1",
-        "Type 2",
-        "Type 3",
-        "Type 4",
-    ];
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        return () => getData();
+    }, []);
+
+    const filterJobs = () => {
+        setLoading(true);
+        if (selectedLocation != null) {
+            const temp = tempInternship;
+            setInternship([]);
+            temp.forEach((element) => {
+                if (element.Location == selectedLocation) {
+                    setInternship((prev) => [...prev, element]);
+                }
+            });
+        }
+        setLoading(false);
+    };
 
     const [selectedLocation, setSelectedLocation] = useState(null);
     const [selectedIndustry, setSelectedIndustry] = useState(null);
     const [selectedCompanyType, setSelectedCompanyType] = useState(null);
 
+    const applyChangesHandler = () => {
+        filterJobs();
+    };
+
+    const clearChangesHandler = () => {
+        setSelectedLocation(null);
+        setSelectedIndustry(null);
+        setSelectedCompanyType(null);
+        setInternship(tempInternship);
+    };
+
     return (
         <>
             <NavBar />
-
-            <div className="bg-rose-50 p-6">
+            {loading && (
+                <div className="w-full h-[100vh] bg-white flex justify-center place-items-center opacity-75 absolute top-0 z-40">
+                    <PropagateLoader
+                        color={"#946cc3"}
+                        loading={loading}
+                        size={25}
+                    />
+                </div>
+            )}
+            <div className="bg-[#FFF6F9] p-6">
                 <h2 className="ml-10 text-xl font-bold min-[280px]:text-xl">
                     Featured Companies Actively Hiring
                 </h2>
             </div>
 
-            <div className="flex justify-evenly w-full mt-12 min-[280px]:flex-col min-[280px]:ml-2 md:flex-row">
-                <Dropdown
-                    options={locations}
-                    selectedOption={selectedLocation}
-                    onSelect={setSelectedLocation}
-                    label="Location"
-                />
-                <Dropdown
-                    options={industries}
-                    selectedOption={selectedIndustry}
-                    onSelect={setSelectedIndustry}
-                    label="Industry"
-                />
-                <Dropdown
-                    options={companyTypes}
-                    selectedOption={selectedCompanyType}
-                    onSelect={setSelectedCompanyType}
-                    label="Company Type"
-                />
+            <div className="flex flex-wrap justify-evenly w-full my-12">
+                <select
+                    name=""
+                    id=""
+                    onChange={(e) => setSelectedLocation(e.target.value)}
+                    className="w-[300px] my-3 bg-[#FFF6F9] p-3 cursor-pointer rounded-lg shadow-lg"
+                >
+                    {locations.map((location, id) => (
+                        <option key={id} value={location}>
+                            {location}
+                        </option>
+                    ))}
+                </select>
+                <select
+                    name=""
+                    id=""
+                    onChange={(e) => setSelectedIndustry(e.target.value)}
+                    className="w-[300px] my-3 bg-[#FFF6F9] p-3 cursor-pointer rounded-lg shadow-lg"
+                >
+                    {industries.map((industry, id) => (
+                        <option key={id} value={industry}>
+                            {industry}
+                        </option>
+                    ))}
+                </select>
+                <select
+                    name=""
+                    id=""
+                    onChange={(e) => setSelectedCompanyType(e.target.value)}
+                    className="w-[300px] my-3 bg-[#FFF6F9] p-3 cursor-pointer rounded-lg shadow-lg"
+                >
+                    {companyTypes.map((company, id) => (
+                        <option key={id} value={company}>
+                            {company}
+                        </option>
+                    ))}
+                </select>
+                <div className="w-[200px] flex justify-between items-center my-3">
+                    <button
+                        onClick={applyChangesHandler}
+                        className="py-1 px-3 text-white hover:bg-[#411e6b] rounded-lg bg-[#9465CC]"
+                    >
+                        Apply
+                    </button>
+                    <button
+                        onClick={clearChangesHandler}
+                        className="py-1 px-3 text-white hover:bg-[#411e6b] rounded-lg bg-[#9465CC]"
+                    >
+                        Clear All
+                    </button>
+                </div>
             </div>
 
             {/*Companies section start here */}
-            <div className="bg-rose-50 ">
-                <div className="flex p-8 md:mt-[50px] min-[280px]:flex-col min-[280px]:mt-[60px] md:flex-row">
-                    <CompaniesCard2 />
-                </div>
-                <div className="flex p-8 md:mt-[50px] min-[280px]:flex-col min-[280px]:mt-[60px] md:flex-row">
-                    <CompaniesCard2 />
-                </div>
-                <div className="flex p-8 md:mt-[50px] min-[280px]:flex-col min-[280px]:mt-[60px] md:flex-row">
-                    <CompaniesCard2 />
-                </div>
+            <div className="bg-[#FFF6F9] pt-20 m-auto justify-evenly flex flex-wrap">
+                {internship != [] &&
+                    internship.map((element, id) => (
+                        <CompaniesCard2 key={id} items={element} />
+                    ))}
             </div>
             {/*Companies section ends here*/}
 

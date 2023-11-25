@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import ServicesCard from "../components/ServicesCard";
 import CompaniesCard from "../components/CompaniesCard";
@@ -7,9 +7,13 @@ import ChallengeCard from "../components/ChallengeCard";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 export default function HomePageBeforeLogin() {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const [internships, setInternships] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const [desc, setDesc] = useState(
         "Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam cum eius odio dolorem natus, delectus ipsatempora eum est perferendis odit minus esse minimaconsequuntur amet! Veritatis eligendi eum libero?"
@@ -30,13 +34,46 @@ export default function HomePageBeforeLogin() {
         }
     };
 
+    const getData = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get(
+                `https://workshala-api.onrender.com/auth/profiles/${
+                    document.cookie.split(";")[0].split("=")[1]
+                }/`
+            );
+            const jobs = await axios.get(
+                `https://internship-api-ljib.onrender.com/internship/${response.data.skills}`
+            );
+            jobs.data.forEach((element) => {
+                setInternships((prev) => [...prev, element]);
+            });
+            setLoading(false);
+        } catch (e) {
+            console.log(e);
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        return () => getData();
+    }, []);
+
     const navigate = useNavigate();
     return (
         <>
             {/* NavBar starts here */}
             <NavBar />
             {/* NavBar ends here */}
-
+            {loading && (
+                <div className="w-full h-[100vh] bg-white flex justify-center place-items-center opacity-75 absolute top-0 z-40">
+                    <PropagateLoader
+                        color={"#946cc3"}
+                        loading={loading}
+                        size={25}
+                    />
+                </div>
+            )}
             {/* Hero Section starts here */}
             <header className="flex  w-5/6 m-auto place-items-center justify-between min-[280px]:flex-col-reverse lg:flex-row lg:my-10">
                 {/* Left Hero Section */}
@@ -121,14 +158,9 @@ export default function HomePageBeforeLogin() {
                     Featured Companies Actively Hiring
                 </h1>
                 <div className="flex pt-12 pb-7 overflow-scroll">
-                    <CompaniesCard />
-                    <CompaniesCard />
-                    <CompaniesCard />
-                    <CompaniesCard />
-                    <CompaniesCard />
-                    <CompaniesCard />
-                    <CompaniesCard />
-                    <CompaniesCard />
+                    {internships.map((internship, id) => (
+                        <CompaniesCard items={internship} key={id} />
+                    ))}
                 </div>
                 <button
                     onClick={() => navigate("/companies")}
