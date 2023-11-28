@@ -48,6 +48,7 @@ export default function WelcomePage() {
     };
 
     const submitHandler = () => {
+        console.log(skills);
         const updateOptions = {
             method: "PUT",
             url: `https://workshala-api.onrender.com/auth/profiles/${
