@@ -96,12 +96,6 @@ export default function NavBar(props) {
                                 My Profile
                             </li>
                         </Link>
-                        {/* <button
-                            onClick={() => dispatch(logout())}
-                            className="p-2 my-2 rounded-md bg-[#946cc3] text-white w-[90px]"
-                        >
-                            Log out
-                        </button> */}
                     </ul>
                 )}
                 {isOpenMenu && !isAuthenticated && (
@@ -159,12 +153,6 @@ export default function NavBar(props) {
                             alt=""
                         />
                     </Link>
-                    {/* <button
-                        onClick={logoutRedirect}
-                        className="w-[100px] bg-[#946cc5] rounded-lg text-white mx-8 text-xs hover:bg-[#2d1b46]"
-                    >
-                        Log out
-                    </button> */}
                 </div>
             ) : (
                 <div className="flex min-[425px]: w-[300px] min-[280px]:hidden md:flex md:justify-end xl:w-[400px] ">

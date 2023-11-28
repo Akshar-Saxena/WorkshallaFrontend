@@ -56,7 +56,9 @@ export default function HomePageBeforeLogin() {
     };
 
     useEffect(() => {
-        return () => getData();
+        if (isAuthenticated) {
+            return () => getData();
+        }
     }, []);
 
     const navigate = useNavigate();

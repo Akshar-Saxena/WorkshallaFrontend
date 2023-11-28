@@ -70,6 +70,7 @@ export default function RegistrationPage() {
                 .request(profileOptions)
                 .then(function (response) {
                     console.log("Created profile");
+                    document.cookie = `user=${response.data.fullname};`;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -129,7 +130,7 @@ export default function RegistrationPage() {
                 userLoggedIn(response.data.id);
             })
             .catch(function (error) {
-                console.log(error);
+                // console.log(error);
                 try {
                     if (
                         error.response.data.email ==
@@ -138,8 +139,15 @@ export default function RegistrationPage() {
                         notifyError("User with this email already exists");
                         setLoading(false);
                     }
+                    if (
+                        error.response.data.username ==
+                        "user with this username already exists."
+                    ) {
+                        notifyError("User with this username already exists");
+                        setLoading(false);
+                    }
                 } catch (e) {
-                    console.log(e);
+                    // console.log(e);
                     notifyError("Error! Try again");
                     setLoading(false);
                 }

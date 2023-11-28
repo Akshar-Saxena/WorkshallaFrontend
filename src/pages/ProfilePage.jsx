@@ -30,7 +30,7 @@ export default function ProfilePage() {
             const response = await axios.get(
                 `https://workshala-api.onrender.com/auth/profiles/${name}/`
             );
-            console.log(response);
+            // console.log(response);
             setUsername(response.data.fullname);
             setBio(response.data.bio);
         } catch (err) {
