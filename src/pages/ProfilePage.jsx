@@ -85,6 +85,7 @@ export default function ProfilePage() {
                 onClick={() => {
                     dispatch(logout());
                     clearCookie("user");
+                    clearCookie("token");
                     navigate("/");
                 }}
                 className="p-2 my-10 ml-10 rounded-md outline outline-1 outline-black bg-white text-black w-[190px] hover:bg-[#946cc5] hover:text-white"
