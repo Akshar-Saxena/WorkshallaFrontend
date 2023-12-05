@@ -29,10 +29,12 @@ const LoginPage = () => {
             cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
     };
 
-    const userLoggedIn = (user) => {
+    const userLoggedIn = (user, token) => {
         dispatch(login());
         clearCookie("user");
+        clearCookie("token");
         document.cookie = `user=${user};`;
+        document.cookie = `token=${token};`;
         navigate("/");
     };
 
@@ -51,31 +53,16 @@ const LoginPage = () => {
         });
     };
 
-    const options = {
-        method: "POST",
-        url: "https://workshala-api.onrender.com/auth/login/",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        data: {
-            email: formData.email,
-            password: formData.password,
-        },
-    };
-
     const loginHandler = () => {
-        setLoading(true);
         axios
-            .request(options)
-            .then(function (response) {
-                // console.log(response.data);
+            .post("https://workshala-api.onrender.com/auth/login/", formData)
+            .then((res) => {
+                // console.log(res);
                 setLoading(false);
-                notify();
-                userLoggedIn(response.data.username);
+                userLoggedIn(res.data.username, res.data.tokens);
             })
-            .catch(function (error) {
-                notifyError("Invalid Username or Password");
-                setLoading(false);
+            .catch((err) => {
+                console.log(err);
             });
     };
     return (
