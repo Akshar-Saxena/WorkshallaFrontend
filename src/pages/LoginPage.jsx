@@ -54,15 +54,18 @@ const LoginPage = () => {
     };
 
     const loginHandler = () => {
+        setLoading(true);
         axios
             .post("https://workshala-api.onrender.com/auth/login/", formData)
             .then((res) => {
                 // console.log(res);
                 setLoading(false);
                 userLoggedIn(res.data.username, res.data.tokens);
+                navigate("/");
             })
             .catch((err) => {
                 console.log(err);
+                setLoading(false);
             });
     };
     return (
