@@ -25,6 +25,7 @@ export default function CompaniesPage() {
             const internships = await axios.get(
                 `https://internship-api-ljib.onrender.com/internship/${response.data.skills}`
             );
+            console.log(internships);
             setInternship(internships.data);
             setTempInternship(internships.data);
             internships.data.forEach((element) => {
