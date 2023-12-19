@@ -22,8 +22,7 @@ function App() {
             <Router>
                 <Routes>
                     <Route exact path="/" element={<HomePage />} />
-                    
-                        
+
                     <Route
                         exact
                         path="/register"
@@ -52,7 +51,7 @@ function App() {
                             path="/profile"
                             element={<ProfilePage />}
                         />
-                        
+
                         <Route
                             exact
                             path="/welcome"
