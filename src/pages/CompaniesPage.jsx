@@ -42,9 +42,7 @@ export default function CompaniesPage() {
     };
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-        console.log("Func Calling");
-        return () => getData();
+        getData();
     }, []);
 
     const filterJobs = () => {
